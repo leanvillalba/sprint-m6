@@ -4,7 +4,7 @@ import com.jayway.jsonpath.internal.filter.ValueNodes;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -29,7 +29,7 @@ public class Usuario {
     @Column
     private String email;
     @Column
-    private Date fechaCreacion; //todo Checkear tipo de Dato: en BBDD DATETIME
+    private LocalDateTime fechaCreacion; //todo Checkear tipo de Dato: en BBDD DATETIME
     @Column
     private Long telefono;
 

@@ -3,7 +3,7 @@ package cl.awakelab.leandrovillalba.sprint6.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -16,7 +16,7 @@ public class Liquidacion {
     @Column
     private int idTrabajador;
     @Column
-    private Date periodo;
+    private LocalDate periodo;
     @Column
     private int sueldoImponible;
     @Column
