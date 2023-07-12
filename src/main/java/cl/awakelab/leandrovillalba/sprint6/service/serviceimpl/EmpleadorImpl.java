@@ -38,7 +38,6 @@ public class EmpleadorImpl implements IEmpleadorService {
         empleador.setApellido2(empleadorActualizar.getApellido2());
         empleador.setDireccion(empleadorActualizar.getDireccion());
         empleador.setEmail(empleadorActualizar.getEmail());
-        //empleador.setIdUsuario(empleadorActualizar.getIdUsuario());
         empleador.setTelefono(empleadorActualizar.getTelefono());
         return objEmpleadorRepo.save(empleador);
     }
@@ -52,7 +51,6 @@ public class EmpleadorImpl implements IEmpleadorService {
         empleador.setApellido2(empleadorActualizar.getApellido2());
         empleador.setDireccion(empleadorActualizar.getDireccion());
         empleador.setEmail(empleadorActualizar.getEmail());
-        //empleador.setIdUsuario(empleadorActualizar.getIdUsuario());
         empleador.setTelefono(empleadorActualizar.getTelefono());
         return objEmpleadorRepo.save(empleador);
     }

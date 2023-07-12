@@ -1,5 +1,6 @@
 package cl.awakelab.leandrovillalba.sprint6.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class Perfil {
     private int estado;
 
     @OneToMany(mappedBy = "perfil")
+    @JsonIgnore //para evitar la recursión infinita
     private List<Usuario> listaUsuarios;
 
 }

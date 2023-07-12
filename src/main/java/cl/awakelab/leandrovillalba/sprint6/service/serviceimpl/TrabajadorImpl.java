@@ -36,8 +36,6 @@ public class TrabajadorImpl implements ITrabajadorService {
         trabajador.setApellido1(trabajadorActualizar.getApellido1());
         trabajador.setApellido2(trabajadorActualizar.getApellido2());
         trabajador.setEmail(trabajadorActualizar.getEmail());
-        //trabajador.setIdInstitucionPrevision(trabajadorActualizar.getIdInstitucionPrevision());
-        //trabajador.setIdInstitucionSalud(trabajadorActualizar.getIdInstitucionSalud());
         trabajador.setTelefono(trabajadorActualizar.getTelefono());
         return objTrabajadorRepo.save(trabajador);
     }
@@ -50,8 +48,6 @@ public class TrabajadorImpl implements ITrabajadorService {
         trabajador.setApellido1(trabajadorActualizar.getApellido1());
         trabajador.setApellido2(trabajadorActualizar.getApellido2());
         trabajador.setEmail(trabajadorActualizar.getEmail());
-        //trabajador.setIdInstitucionPrevision(trabajadorActualizar.getIdInstitucionPrevision());
-        //trabajador.setIdInstitucionSalud(trabajadorActualizar.getIdInstitucionSalud());
         trabajador.setTelefono(trabajadorActualizar.getTelefono());
         return objTrabajadorRepo.save(trabajador);
     }

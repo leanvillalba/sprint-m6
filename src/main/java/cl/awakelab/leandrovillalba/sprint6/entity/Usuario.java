@@ -26,7 +26,7 @@ public class Usuario {
     @Column (name ="apellido_2", length = 100)
     private String apellido2;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER) //CascadeAll causaba recursión infinita
     @JoinColumn(name = "id_perfil", nullable = false)
     private Perfil perfil;
 
