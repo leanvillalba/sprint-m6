@@ -1,21 +1,27 @@
 package cl.awakelab.leandrovillalba.sprint6.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "institucion_salud")
 public class InstitucionSalud {
     @Id
-    @Column
+    @Column (nullable = false)
     private int idInstitucionSalud;
-    @Column
+    @Column (length = 50, nullable = false)
     private String descripcion;
-    @Column
+    @Column (nullable = false)
     private float porcDcto;
+
+    @OneToMany(mappedBy = "institucion_salud")
+    private List<Trabajador> listaTrabajadores;
+
+    @OneToMany(mappedBy = "institucion_salud")
+    private List<Liquidacion> listaLiquidaciones;
+
 }
 

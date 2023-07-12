@@ -10,30 +10,40 @@ import java.time.LocalDate;
 @Table(name = "liquidacion")
 public class Liquidacion {
     @Id
-    @Column
+    @Column (nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idLiquidacion;
-    @Column
-    private int idTrabajador;
-    @Column
+    private long idLiquidacion;
+
+    @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn (name = "id_trabajador", nullable = false)
+    private Trabajador trabajador;
+
+    @Column (nullable = false)
     private LocalDate periodo;
-    @Column
+
+    @Column (nullable = false)
     private int sueldoImponible;
-    @Column
+    @Column (nullable = false)
     private int sueldoLiquido;
-    @Column
-    private int idInsitucionSalud;
-    @Column
+
+    @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_inst_salud", nullable = false)
+    private InstitucionSalud instSalud;
+
+    @Column (nullable = false)
     private float montoInstitucionSalud;
-    @Column
-    private int idInstitucionPrevisional;
-    @Column
+
+    @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_inst_prevision", nullable = false)
+    private InstitucionPrevision instPrev;
+
+    @Column (nullable = false)
     private float montoInstitucionPrevisional;
-    @Column
+    @Column (nullable = false)
     private float totalDescuento;
-    @Column
+    @Column (nullable = false)
     private float totalHaberes;
-    @Column
+    @Column (nullable = false)
     private int anticipo;
 
 }
