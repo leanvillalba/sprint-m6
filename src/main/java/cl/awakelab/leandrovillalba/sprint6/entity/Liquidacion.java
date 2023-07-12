@@ -28,14 +28,14 @@ public class Liquidacion {
 
     @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_salud", nullable = false)
-    private InstitucionSalud instSalud;
+    private InstitucionSalud institucionSalud;
 
     @Column (nullable = false)
     private float montoInstitucionSalud;
 
     @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_prevision", nullable = false)
-    private InstitucionPrevision instPrev;
+    private InstitucionPrevision institucionPrevision;
 
     @Column (nullable = false)
     private float montoInstitucionPrevisional;

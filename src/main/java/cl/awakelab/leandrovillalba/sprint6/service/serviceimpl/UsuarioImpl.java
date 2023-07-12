@@ -33,7 +33,7 @@ public class UsuarioImpl implements IUsuarioService {
         usuario.setNombre(usuarioActualizar.getNombre());
         usuario.setApellido1(usuarioActualizar.getApellido1());
         usuario.setApellido2(usuarioActualizar.getApellido2());
-        usuario.setIdPerfil(usuarioActualizar.getIdPerfil());
+        //usuario.setIdPerfil(usuarioActualizar.getIdPerfil());
         usuario.setEmail(usuarioActualizar.getEmail());
         usuario.setFechaCreacion(usuarioActualizar.getFechaCreacion());
         usuario.setTelefono(usuarioActualizar.getTelefono());
@@ -47,7 +47,7 @@ public class UsuarioImpl implements IUsuarioService {
         usuario.setNombre(usuarioActualizar.getNombre());
         usuario.setApellido1(usuarioActualizar.getApellido1());
         usuario.setApellido2(usuarioActualizar.getApellido2());
-        usuario.setIdPerfil(usuarioActualizar.getIdPerfil());
+        //usuario.setIdPerfil(usuarioActualizar.getIdPerfil());
         usuario.setEmail(usuarioActualizar.getEmail());
         usuario.setFechaCreacion(usuarioActualizar.getFechaCreacion());
         usuario.setTelefono(usuarioActualizar.getTelefono());

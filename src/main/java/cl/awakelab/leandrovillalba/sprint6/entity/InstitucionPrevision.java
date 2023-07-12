@@ -17,10 +17,10 @@ public class InstitucionPrevision {
     @Column (nullable = false)
     private float porcDcto;
 
-    @OneToMany(mappedBy = "institucion_prevision")
+    @OneToMany(mappedBy = "institucionPrevision")
     private List<Trabajador> listaTrabajadores;
 
-    @OneToMany(mappedBy = "institucion_prevision")
+    @OneToMany(mappedBy = "institucionPrevision")
     private List<Liquidacion> listaLiquidaciones;
 
 }

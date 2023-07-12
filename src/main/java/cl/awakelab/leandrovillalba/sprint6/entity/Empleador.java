@@ -33,7 +33,7 @@ public class Empleador {
     @Column
     private Long telefono;
 
-    @ManyToMany (mappedBy = "empleador")
+    @ManyToMany (mappedBy = "listaEmpleadores")
     private List<Trabajador> listaTrabajadores;
 
 }

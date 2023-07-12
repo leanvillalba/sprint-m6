@@ -31,13 +31,13 @@ public class LiquidacionImpl implements ILiquidacionService {
     @Override
     public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar, int idLiquidacion) {
         Liquidacion liquidacion = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
-        liquidacion.setIdTrabajador(liquidacionActualizar.getIdTrabajador());
+        //liquidacion.setIdTrabajador(liquidacionActualizar.getIdTrabajador());
         liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
         liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
         liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
-        liquidacion.setIdInsitucionSalud(liquidacion.getIdInsitucionSalud());
+        //liquidacion.setIdInsitucionSalud(liquidacion.getIdInsitucionSalud());
         liquidacion.setMontoInstitucionSalud(liquidacionActualizar.getMontoInstitucionSalud());
-        liquidacion.setIdInstitucionPrevisional(liquidacionActualizar.getIdInstitucionPrevisional());
+        //liquidacion.setIdInstitucionPrevisional(liquidacionActualizar.getIdInstitucionPrevisional());
         liquidacion.setMontoInstitucionPrevisional(liquidacionActualizar.getMontoInstitucionPrevisional());
         liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
         liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
@@ -47,14 +47,14 @@ public class LiquidacionImpl implements ILiquidacionService {
 
     @Override
     public Liquidacion actualizarLiquidacion2(Liquidacion liquidacionActualizar) {
-        Liquidacion liquidacion = objLiquidacionRepo.findById(liquidacionActualizar.getIdLiquidacion()).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
-        liquidacion.setIdTrabajador(liquidacionActualizar.getIdTrabajador());
+        Liquidacion liquidacion = objLiquidacionRepo.findById((int) liquidacionActualizar.getIdLiquidacion()).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
+        //liquidacion.setIdTrabajador(liquidacionActualizar.getIdTrabajador());
         liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
         liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
         liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
-        liquidacion.setIdInsitucionSalud(liquidacion.getIdInsitucionSalud());
+        //liquidacion.setIdInsitucionSalud(liquidacion.getIdInsitucionSalud());
         liquidacion.setMontoInstitucionSalud(liquidacionActualizar.getMontoInstitucionSalud());
-        liquidacion.setIdInstitucionPrevisional(liquidacionActualizar.getIdInstitucionPrevisional());
+        //liquidacion.setIdInstitucionPrevisional(liquidacionActualizar.getIdInstitucionPrevisional());
         liquidacion.setMontoInstitucionPrevisional(liquidacionActualizar.getMontoInstitucionPrevisional());
         liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
         liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
