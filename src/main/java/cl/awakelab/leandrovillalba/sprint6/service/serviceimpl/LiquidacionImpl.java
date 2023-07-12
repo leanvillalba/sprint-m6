@@ -24,12 +24,12 @@ public class LiquidacionImpl implements ILiquidacionService {
     }
 
     @Override
-    public Liquidacion buscarLiquidacionPorId(int idLiquidacion) {
+    public Liquidacion buscarLiquidacionPorId(long idLiquidacion) {
         return objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
     }
 
     @Override
-    public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar, int idLiquidacion) {
+    public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar, long idLiquidacion) {
         Liquidacion liquidacion = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
         //liquidacion.setIdTrabajador(liquidacionActualizar.getIdTrabajador());
         liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
@@ -47,7 +47,7 @@ public class LiquidacionImpl implements ILiquidacionService {
 
     @Override
     public Liquidacion actualizarLiquidacion2(Liquidacion liquidacionActualizar) {
-        Liquidacion liquidacion = objLiquidacionRepo.findById((int) liquidacionActualizar.getIdLiquidacion()).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
+        Liquidacion liquidacion = objLiquidacionRepo.findById(liquidacionActualizar.getIdLiquidacion()).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
         //liquidacion.setIdTrabajador(liquidacionActualizar.getIdTrabajador());
         liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
         liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
@@ -68,7 +68,7 @@ public class LiquidacionImpl implements ILiquidacionService {
     }
 
     @Override
-    public void eliminarLiquidacion2(int idLiquidacion) {
+    public void eliminarLiquidacion2(long idLiquidacion) {
         objLiquidacionRepo.deleteById(idLiquidacion);
     }
 }
