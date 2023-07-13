@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Registro</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -48,46 +48,29 @@
       </nav>
     </header>
 
-    <main>
-      <div class="container my-5">
-        <section>
-          <h1>Liquidaciones de Sueldo</h1>
-          <h1>Para Trabajadores de Casa</h1>
-          <hr />
-          <p style="width: 50%">
-            Podrás crear liquidaciones de sueldo para tus trabajadores de casa
-            particular y si eres contador podrás agregar a tus
-            empleadores/clientes y manejar a sus trabajadores y liquidaciones.
-          </p>
-          <a href="login.html" class="btn btn-secondary margin-right-sm"
-            >Iniciar Sesión</a
-          >
-          <a href="registro.html" class="btn btn-primary">Registrarse</a>
-        </section>
-      </div>
-    </main>
-
     <section class="vh-100">
       <div class="container py-5 h-100">
+        <h3 style="text-align: center">Registro Usuario</h3>
         <div class="row d-flex align-items-center justify-content-center h-100">
-          <h3 style="text-align: center">Contacto</h3>
-          <div class="col-md-8 col-lg-7 col-xl-6">
-            <img
-              src="https://img.freepik.com/vector-gratis/servicio-consultoria-asesoria-financiera-soporte-experto-personajes-dibujos-animados-empresaria-asesor-servicio-asistencia-asesoramiento-empresarial-vector-ilustracion-metafora-concepto-aislado_335657-2733.jpg?size=626&ext=jpg"
-              class="img-fluid"
-              height="400"
-              width="400"
-              alt="image"
-            />
-          </div>
-          <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          <div class="col-md-7 col-lg-5 col-xl-5">
             <form>
+              <!-- Run input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Run</label>
+                <input
+                  type="number"
+                  name="run-formulario"
+                  class="form-control form-control-lg"
+                  required
+                />
+              </div>
+
               <!-- Nombre input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Nombre</label>
                 <input
                   type="text"
-                  name="nombre-contacto"
+                  name="nombre-formulario"
                   class="form-control form-control-lg"
                   required
                 />
@@ -98,25 +81,41 @@
                 <label class="form-label">Email</label>
                 <input
                   type="email"
-                  name="email-contacto"
+                  name="email-formulario"
                   class="form-control form-control-lg"
                   required
                 />
               </div>
 
-              <!-- Mensaje input -->
+              <!-- Password input -->
               <div class="form-outline mb-4">
-                <label class="form-label">Mensaje</label>
-                <textarea
-                  name="mensaje-contacto"
+                <label class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  name="password-formulario"
                   class="form-control form-control-lg"
                   required
-                ></textarea>
+                />
+              </div>
+
+              <!-- Opciones de selección -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Ocupación</label>
+                <select
+                  name="ocupacion-formulario"
+                  class="form-select form-select-lg"
+                >
+                  <option value="empleador">Empleador</option>
+                  <option value="contador">Contador</option>
+                </select>
               </div>
 
               <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-lg btn-block">
-                Enviar
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg btn-block w-100"
+              >
+                Registrar
               </button>
             </form>
           </div>
@@ -136,11 +135,11 @@
         </div>
         <div class="text-center p-3">© 2023 Bootcamp Java</div>
       </footer>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"
+      ></script>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
