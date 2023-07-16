@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
-<head th:include="/static/head.html"></head>
+<head th:include="~{../static/html/head.html}"></head>
 
 <body>
-<header th:include="~{../static/header.html}"></header>
+<header th:include="~{../static/html/header.html}"></header>
 
 <main>
     <div class="container my-5">
@@ -81,6 +81,6 @@
         </div>
     </div>
 </section>
-<footer th:include="footer.html"></footer>
+<footer th:include="~{../static/html/footer.html}"></footer>
 </body>
 </html>

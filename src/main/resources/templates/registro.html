@@ -17,7 +17,7 @@
     <header>
       <nav class="navbar navbar-expand-lg" style="width: 100%">
         <div class="container" style="background-color: #f8f8f8">
-          <a class="navbar-brand" href="home.html">Logo</a>
+          <a class="navbar-brand" href="/">Logo</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -32,15 +32,13 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="home.html"
-                  >Home</a
-                >
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="registro.html">Registrarse</a>
+                <a class="nav-link" href="/registro">Registrarse</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-primary" href="login.html">Iniciar Sesión</a>
+                <a class="btn btn-primary" href="/login">Iniciar Sesión</a>
               </li>
             </ul>
           </div>
@@ -53,13 +51,13 @@
         <h3 style="text-align: center">Registro Usuario</h3>
         <div class="row d-flex align-items-center justify-content-center h-100">
           <div class="col-md-7 col-lg-5 col-xl-5">
-            <form>
+            <form action="/usuario/crearUsuario" method="POST">
               <!-- Run input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Run</label>
                 <input
                   type="number"
-                  name="runRegistro"
+                  name="run"
                   class="form-control form-control-lg"
                   required
                 />
@@ -70,7 +68,7 @@
                 <label class="form-label">Nombre</label>
                 <input
                   type="text"
-                  name="nombreRegistro"
+                  name="nombre"
                   class="form-control form-control-lg"
                   required
                 />
@@ -80,10 +78,10 @@
               <div class="form-outline mb-4">
                 <label class="form-label">Apellido 1</label>
                 <input
-                        type="text"
-                        name="apellido1Registro"
-                        class="form-control form-control-lg"
-                        required
+                  type="text"
+                  name="apellido1"
+                  class="form-control form-control-lg"
+                  required
                 />
               </div>
 
@@ -92,7 +90,7 @@
                 <label class="form-label">Email</label>
                 <input
                   type="email"
-                  name="emailRegistro"
+                  name="email"
                   class="form-control form-control-lg"
                   required
                 />
@@ -103,24 +101,40 @@
                 <label class="form-label">Contraseña</label>
                 <input
                   type="password"
-                  name="passwordRegistro"
+                  name="clave"
                   class="form-control form-control-lg"
                   required
                 />
               </div>
 
               <!-- Opciones de selección -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Ocupación</label>
-                <select
-                  name="ocupacionRegistro"
-                  class="form-select form-select-lg"
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="perfil"
+                  id="inlineRadio1"
+                  th:value="${3}"
+                />
+                <label class="form-check-label" for="inlineRadio1"
+                  >Empleador</label
                 >
-                  <option value="empleador">Empleador</option>
-                  <option value="contador">Contador</option>
-                </select>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="perfil"
+                  id="inlineRadio2"
+                  th:value="${2}"
+                />
+                <label class="form-check-label" for="inlineRadio2"
+                  >Contador</label
+                >
               </div>
 
+              <br />
+              <br />
               <!-- Submit button -->
               <button
                 type="submit"
@@ -128,14 +142,27 @@
               >
                 Registrar
               </button>
+              <br />
+              <br />
+
+              <a th:href="@{/}">
+                <button
+                  class="btn btn-secondary btn-lg btn-block w-100"
+                  type="button"
+                >
+                  Cancelar
+                </button>
+              </a>
             </form>
           </div>
         </div>
       </div>
     </section>
     <br /><br />
+    <!--
 
-    <div class="container">
+      
+      <div class="container">
       <footer style="background-color: #ebebeb">
         <div class="container p-4">
           <div class="row">
@@ -147,11 +174,12 @@
         </div>
         <div class="text-center p-3">© 2023 Bootcamp Java</div>
       </footer>
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"
-      ></script>
     </div>
+  -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

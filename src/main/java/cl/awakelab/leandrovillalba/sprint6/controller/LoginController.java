@@ -27,15 +27,13 @@ public class LoginController {
     public String iniciarSesion(@RequestParam("runLogin") int run, @RequestParam("passwordLogin") String clave, Model model) {
 
         List<Usuario> listaUsuarios = objUsuarioService.listarUsuarios();
-        // Verificar si las credenciales del usuario son válidas
+
         for (Usuario usuario : listaUsuarios) {
             if (usuario.getRun() == run && usuario.getClave().equals(clave)) {
-                // Si es válido, agrega al usuario al modelo y lo redirige a "bienvenida.html"
-                model.addAttribute("usuario", usuario); // Lo agrego para usarlo en el html
+                model.addAttribute("usuario", usuario);
                 return "bienvenida";
             }
         }
-        // Si las credenciales son inválidas, redirige al usuario nuevamente al login
         return "redirect:/login";
     }
 

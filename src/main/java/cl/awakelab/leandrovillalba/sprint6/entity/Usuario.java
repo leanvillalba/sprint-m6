@@ -33,7 +33,7 @@ public class Usuario {
     @Column (length = 100, nullable = false)
     private String email;
     @Column (nullable = false)
-    private LocalDateTime fechaCreacion;
+    private LocalDateTime fechaCreacion = LocalDateTime.now();
     @Column
     private Long telefono;
 

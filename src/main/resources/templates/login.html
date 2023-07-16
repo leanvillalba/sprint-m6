@@ -35,7 +35,7 @@
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="registro.html">Registrarse</a>
+                <a class="nav-link" href="/registro">Registrarse</a>
               </li>
               <li class="nav-item">
                 <a class="btn btn-primary" href="/login">Iniciar Sesión</a>
@@ -75,16 +75,24 @@
               </div>
 
               <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-lg btn-block">
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg btn-block w-100"
+              >
                 Iniciar Sesión
               </button>
               <br />
               <br />
 
-              <!-- Registrarse button -->
-              <a href="registro.html" class="btn btn-light btn-lg btn-block"
-                >Registrarse</a
-              >
+              <!-- Cancelar button -->
+              <a th:href="@{/}">
+                <button
+                  class="btn btn-secondary btn-lg btn-block w-100"
+                  type="button"
+                >
+                  Cancelar
+                </button>
+              </a>
             </form>
           </div>
         </div>

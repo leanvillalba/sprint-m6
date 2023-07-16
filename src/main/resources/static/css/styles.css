@@ -1,0 +1,11 @@
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    justify-items: center;
+}
+
+.button-container button {
+    width: 100%;
+    white-space: nowrap;
+}

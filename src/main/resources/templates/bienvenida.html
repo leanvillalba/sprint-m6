@@ -10,7 +10,7 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <link href="styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css" type="text/css" />
   </head>
 
   <body>
@@ -125,46 +125,51 @@
           </th:block>
           <h3 style="text-align: center">¿Qué deseas hacer?</h3>
           <br />
-
-          <style>
-            .button-container {
-              display: grid;
-              grid-template-columns: repeat(4, 1fr);
-              gap: 1rem;
-              justify-items: center;
-            }
-
-            .button-container button {
-              width: 100%;
-              white-space: nowrap;
-            }
-          </style>
-
+          <br />
           <div class="button-container">
-            <a class="btn btn-primary btn-lg" type="button"> Crear Usuario </a>
-            <a class="btn btn-primary btn-lg" type="button">
-              Crear Empleador
+            <a th:href="@{/usuario/crearUsuario}">
+              <button class="btn btn-primary btn-lg" type="button">
+                Crear Usuario
+              </button>
             </a>
-            <a class="btn btn-primary btn-lg" type="button">
-              Crear Trabajador
+            <a href="#">
+              <button class="btn btn-primary btn-lg" type="button">
+                Crear Empleador
+              </button>
             </a>
-            <a class="btn btn-primary btn-lg" type="button">
-              Crear Liquidación
+            <a href="#">
+              <button class="btn btn-primary btn-lg" type="button">
+                Crear Trabajador
+              </button>
             </a>
-            <a class="btn btn-primary btn-lg" type="button" href="/usuario">
-              Ver y/o Editar Usuarios
+            <a href="#">
+              <button class="btn btn-primary btn-lg" type="button">
+                Crear Liquidación
+              </button>
             </a>
-            <a class="btn btn-primary btn-lg" type="button">
-              Ver y/o Editar Empleador
+            <a th:href="@{/usuario}">
+              <button class="btn btn-primary btn-lg" type="button">
+                Ver y/o Editar Usuarios
+              </button>
             </a>
-            <a class="btn btn-primary btn-lg" type="button">
-              Ver y/o Editar Trabajador
+            <a href="#">
+              <button class="btn btn-primary btn-lg" type="button">
+                Ver y/o Editar Empleador
+              </button>
             </a>
-            <a class="btn btn-primary btn-lg" type="button">
-              Ver y/o Editar Liquidación
+            <a href="#">
+              <button class="btn btn-primary btn-lg" type="button">
+                Ver y/o Editar Trabajador
+              </button>
+            </a>
+            <a href="#">
+              <button class="btn btn-primary btn-lg" type="button">
+                Ver y/o Editar Liquidación
+              </button>
             </a>
           </div>
 
+          <br />
           <br />
           <h4 style="text-align: center">
             Para agregar una nueva liquidación selecciona la opción
@@ -174,6 +179,8 @@
         </section>
       </div>
     </main>
+    <br />
+    <br />
 
     <div class="container">
       <footer style="background-color: #ebebeb">
