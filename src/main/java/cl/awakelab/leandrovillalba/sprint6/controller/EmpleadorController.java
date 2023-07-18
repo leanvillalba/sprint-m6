@@ -63,6 +63,18 @@ public class EmpleadorController {
         return "redirect:/empleador/listaEmpleadores/{idUsuario}";
     }
 
+    @GetMapping("/{idEmpleador}/eliminar")
+    public String eliminarEmpleador(@PathVariable int idEmpleador, RedirectAttributes redirectAttributes) {
+        Empleador empleador = objEmpleadorService.buscarEmpleardorPorId(idEmpleador);
+        int idUsuario = empleador.getUsuario().getIdUsuario();
+        objEmpleadorService.eliminarEmpleador2(idEmpleador);
+        redirectAttributes.addAttribute("idUsuario", idUsuario);
+        return "redirect:/empleador/listaEmpleadores/{idUsuario}";
+    }
+
+
+
+
 
 }
 
