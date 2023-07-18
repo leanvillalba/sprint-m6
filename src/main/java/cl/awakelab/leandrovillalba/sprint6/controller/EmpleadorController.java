@@ -46,6 +46,23 @@ public class EmpleadorController {
         return "redirect:/empleador/listaEmpleadores/{idUsuario}";
     }
 
+    @GetMapping("/{idEmpleador}/editar")
+    public String mostrarFormularioEditarEmpleador(@PathVariable int idEmpleador, Model model){
+        Empleador empleador = objEmpleadorService.buscarEmpleardorPorId(idEmpleador);
+        model.addAttribute("empleador", empleador);
+        // Agrego el objeto usuario al modelo, antes me daba error en editarEmpleador.html porque no me reconocía el idUsuario
+        model.addAttribute("usuario", empleador.getUsuario());
+        return "editarEmpleador";
+    }
+
+    @PostMapping("/{idEmpleador}/editar")
+    public String actualizarEmpleador(@PathVariable int idEmpleador, @ModelAttribute Empleador empleador, RedirectAttributes redirectAttributes){
+        objEmpleadorService.actualizarEmpleador2(empleador);
+        // Guardo idUsuario para poder redireccionar a la lista de empleadores + id del Usuario que creará los empleadores
+        redirectAttributes.addAttribute("idUsuario", empleador.getUsuario().getIdUsuario());
+        return "redirect:/empleador/listaEmpleadores/{idUsuario}";
+    }
+
 
 }
 
