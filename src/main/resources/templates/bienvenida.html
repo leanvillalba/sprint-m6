@@ -45,9 +45,9 @@
                   Usuario</a
                 >
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Agregar usuario</a></li>
+                  <li><a class="dropdown-item" th:href="@{/usuario/crearUsuario}">Agregar usuario</a></li>
                   <li>
-                    <a class="dropdown-item" href="#">Ver usuarios</a>
+                    <a class="dropdown-item" th:href="@{/usuario}">Ver usuarios</a>
                   </li>
                 </ul>
               </li>
@@ -63,10 +63,10 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" th:href="@{/empleador/crearEmpleador}">Agregar empleadador</a>
+                    <a class="dropdown-item" href="#">Agregar empleadador</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" th:href="@{/empleador}"></a>Ver empleadores</a>
+                    <a class="dropdown-item" href="#"></a>Ver empleadores</a>
                   </li>
                 </ul>
               </li>
@@ -107,7 +107,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="btn btn-primary" href="#">Cerrar Sesión</a>
+                <a class="btn btn-primary" href="/">Cerrar Sesión</a>
               </li>
             </ul>
           </div>

@@ -127,8 +127,20 @@
         <section>
           <h3 style="text-align: center">Empleadores</h3>
           <br />
+          <!-- Campo oculto para el idUsuario 
+            <input
+            type="hidden"
+            name="usuario.idUsuario"
+            th:value="${usuario.idUsuario}"
+            />
+          -->
 
           <div class="button-container">
+            <!--
+              <a
+              th:href="@{/empleador/crearEmpleador/{idUsuario}(idUsuario=${usuario.idUsuario})}"
+              >
+            -->
             <a href="#">
               <button class="btn btn-primary btn-lg" type="button">
                 Agregar Empleador
