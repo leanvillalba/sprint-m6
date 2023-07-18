@@ -1,5 +1,6 @@
 package cl.awakelab.leandrovillalba.sprint6.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jayway.jsonpath.internal.filter.ValueNodes;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -38,6 +39,7 @@ public class Usuario {
     private Long telefono;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
     private List<Empleador> listaEmpleadores;
 
 }

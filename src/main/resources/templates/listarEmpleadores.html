@@ -70,10 +70,18 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="#">Agregar empleadador</a>
+                    <a
+                      class="dropdown-item"
+                      th:href="@{/empleador/crearEmpleador/{idUsuario}(idUsuario=${usuario.idUsuario})}"
+                      >Agregar empleadador</a
+                    >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">Ver empleadores</a>
+                    <a
+                      class="dropdown-item"
+                      href="@{/empleador/listaEmpleadores/{idUsuario}(idUsuario=${usuario.idUsuario})}"
+                      >Ver empleadores</a
+                    >
                   </li>
                 </ul>
               </li>
@@ -129,7 +137,9 @@
           <br />
 
           <div class="button-container">
-            <a th:href="@{/usuario/crearEmpleador}">
+            <a
+              th:href="@{/empleador/crearEmpleador/{idUsuario}(idUsuario=${usuario.idUsuario})}"
+            >
               <button class="btn btn-primary btn-lg" type="button">
                 Agregar Empleador
               </button>
@@ -145,27 +155,24 @@
                 <th>Nombre</th>
                 <th>Apellido 1</th>
                 <th>Email</th>
-
                 <th>Acción</th>
               </tr>
             </thead>
             <tbody>
-              <tr th:each="empleadador: ${empleadores}">
+              <tr th:each="empleador : ${empleadores}">
                 <td th:text="${empleador.idEmpleador}"></td>
                 <td th:text="${empleador.run}"></td>
                 <td th:text="${empleador.nombre}"></td>
                 <td th:text="${empleador.apellido1}"></td>
                 <td th:text="${empleador.email}"></td>
-
                 <td class="text-center">
                   <a
                     th:href="@{/empleador/{idEmpleador}/editar(idEmpleador=${empleador.idEmpleador})}"
                     class="m-2 btn btn-info"
                     >Editar</a
                   >
-
                   <a
-                    th:href="@{/empleadador/{idEmpleador}/eliminar(idEmpleador=${empleador.idEmpleador})}"
+                    th:href="@{/empleador/{idEmpleador}/eliminar(idEmpleador=${empleador.idEmpleador})}"
                     class="m-2 btn btn-danger"
                     >Eliminar</a
                   >
@@ -173,7 +180,6 @@
               </tr>
             </tbody>
           </table>
-
           <br />
         </section>
       </div>
