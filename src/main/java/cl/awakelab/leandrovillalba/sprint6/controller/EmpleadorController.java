@@ -21,11 +21,15 @@ public class EmpleadorController {
     IUsuarioService objUsuarioService;
 
     @GetMapping("/listaEmpleadores/{idUsuario}")
-    public String listarEmpleadores(@PathVariable int idUsuario, Model model){
+    public String listarEmpleadores(@PathVariable int idUsuario, Model model) {
         List<Empleador> listaEmpleadores = objEmpleadorService.listarEmpleadores();
+        Usuario usuario = objUsuarioService.buscarUsuarioPorId(idUsuario);
         model.addAttribute("empleadores", listaEmpleadores);
+        // Para que pueda usar el idUsuario en vista listarEmpleadores y pueda redirigir correctamente en los links
+        model.addAttribute("usuario", usuario);
         return "listarEmpleadores";
     }
+
 
     @GetMapping("/crearEmpleador/{idUsuario}")
     public String mostrarFormularioCrearEmpleador(@PathVariable int idUsuario, Model model){

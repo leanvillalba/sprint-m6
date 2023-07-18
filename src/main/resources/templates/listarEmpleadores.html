@@ -68,9 +68,18 @@
                 >
                   Empleador
                 </a>
+                <input
+                  type="hidden"
+                  name="usuario.idUsuario"
+                  th:value="${usuario.idUsuario}"
+                />
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="#">Agregar empleadador</a>
+                    <a
+                      class="dropdown-item"
+                      th:href="@{/empleador/crearEmpleador/{idUsuario}(idUsuario=${usuario.idUsuario})}"
+                      >Agregar empleadador</a
+                    >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#">Ver empleadores</a>
@@ -136,15 +145,11 @@
           -->
 
           <div class="button-container">
-            <!--
-              <a
+            <a
               th:href="@{/empleador/crearEmpleador/{idUsuario}(idUsuario=${usuario.idUsuario})}"
-              >
-            -->
-            <a href="#">
-              <button class="btn btn-primary btn-lg" type="button">
-                Agregar Empleador
-              </button>
+              class="btn btn-primary btn-lg"
+            >
+              Agregar Empleador
             </a>
           </div>
           <br />
