@@ -52,7 +52,7 @@ public class UsuarioController {
             Empleador empleador = objEmpleadorService.crearEmpleadorDesdeUsuario(usuario);
         }
 
-        return "redirect:/bienvenida";
+        return "bienvenida";
     }
 
     @PostMapping("/registrarUsuario")
