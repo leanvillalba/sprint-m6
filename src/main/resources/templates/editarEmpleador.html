@@ -55,17 +55,16 @@
           <div class="col-md-7 col-lg-5 col-xl-5">
             <form th:action="@{/empleador/{idEmpleador}/editar(idEmpleador=${empleador.idEmpleador})}" th:object="${empleador}" method="POST">
 
-              <!-- Run input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Run</label>
-                <input
-                  type="number"
+              
+                  
+                  <input
+                  type="hidden"
                   name="run"
                   class="form-control form-control-lg"
                   th:value="${empleador.run}"
                   required
-                />
-              </div>
+                  />
+             
 
               <!-- Nombre input -->
               <div class="form-outline mb-4">

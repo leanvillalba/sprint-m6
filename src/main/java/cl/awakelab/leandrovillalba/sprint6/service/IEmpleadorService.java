@@ -1,6 +1,7 @@
 package cl.awakelab.leandrovillalba.sprint6.service;
 
 import cl.awakelab.leandrovillalba.sprint6.entity.Empleador;
+import cl.awakelab.leandrovillalba.sprint6.entity.Usuario;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface IEmpleadorService {
     Empleador actualizarEmpleador2(Empleador empleadorActualizar);
     void eliminarEmpleador(Empleador empleador);
     void eliminarEmpleador2(int idEmpleador);
+    Empleador crearEmpleadorDesdeUsuario(Usuario usuario);
+
 }

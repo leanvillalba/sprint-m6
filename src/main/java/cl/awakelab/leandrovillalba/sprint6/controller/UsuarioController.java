@@ -1,7 +1,10 @@
 package cl.awakelab.leandrovillalba.sprint6.controller;
 
 
+import cl.awakelab.leandrovillalba.sprint6.entity.Empleador;
+import cl.awakelab.leandrovillalba.sprint6.entity.Perfil;
 import cl.awakelab.leandrovillalba.sprint6.entity.Usuario;
+import cl.awakelab.leandrovillalba.sprint6.service.IEmpleadorService;
 import cl.awakelab.leandrovillalba.sprint6.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,8 @@ import java.util.List;
 public class UsuarioController {
     @Autowired
     IUsuarioService objUsuarioService;
+    @Autowired
+    IEmpleadorService objEmpleadorService;
 
     @GetMapping //Todos los métodos de los controllers son de tipo String
     public String listarUsuarios(Model model){
@@ -36,10 +41,35 @@ public class UsuarioController {
     }
 
     @PostMapping("/crearUsuario")
-    public String crearUsuario(@ModelAttribute Usuario usuario){
+    public String crearUsuario(@ModelAttribute Usuario usuario, @RequestParam("perfil") int idPerfil, Model model){
+        Perfil perfil = new Perfil();
+        perfil.setIdPerfil(idPerfil);
+        usuario.setPerfil(perfil);
         objUsuarioService.crearUsuario(usuario);
-        return"redirect:/usuario";
+        model.addAttribute("usuario", usuario);
+
+        if (idPerfil == 3){
+            Empleador empleador = objEmpleadorService.crearEmpleadorDesdeUsuario(usuario);
+        }
+
+        return "redirect:/bienvenida";
     }
+
+    @PostMapping("/registrarUsuario")
+    public String registrarUsuario(@ModelAttribute Usuario usuario, @RequestParam("perfil") int idPerfil){
+        Perfil perfil = new Perfil();
+        perfil.setIdPerfil(idPerfil);
+        usuario.setPerfil(perfil);
+        objUsuarioService.crearUsuario(usuario);
+
+        if (idPerfil == 3){
+            Empleador empleador = objEmpleadorService.crearEmpleadorDesdeUsuario(usuario);
+        }
+
+        return "redirect:/login";
+    }
+
+
 
     @GetMapping("/{idUsuario}/editar")
     public String mostrarFormularioEditarUsuario(@PathVariable int idUsuario, Model model){

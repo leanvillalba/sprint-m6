@@ -51,7 +51,7 @@
         <h3 style="text-align: center">Registro Usuario</h3>
         <div class="row d-flex align-items-center justify-content-center h-100">
           <div class="col-md-7 col-lg-5 col-xl-5">
-            <form action="/usuario/crearUsuario" method="POST">
+            <form action="/usuario/registrarUsuario" method="POST">
               <!-- Run input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Run</label>
@@ -117,9 +117,9 @@
                 <input
                   class="form-check-input"
                   type="radio"
-                  name="perfil.idUsuario"
+                  name="perfil"
                   id="inlineRadio1"
-                  th:value="${3}"
+                  th:value="3"
                 />
                 <label class="form-check-label" for="inlineRadio1"
                   >Empleador</label
@@ -129,9 +129,9 @@
                 <input
                   class="form-check-input"
                   type="radio"
-                  name="perfil.idUsuario"
+                  name="perfil"
                   id="inlineRadio2"
-                  th:value="${2}"
+                  th:value="2"
                 />
                 <label class="form-check-label" for="inlineRadio2"
                   >Contador</label

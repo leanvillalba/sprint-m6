@@ -1,6 +1,7 @@
 package cl.awakelab.leandrovillalba.sprint6.service.serviceimpl;
 
 import cl.awakelab.leandrovillalba.sprint6.entity.Empleador;
+import cl.awakelab.leandrovillalba.sprint6.entity.Usuario;
 import cl.awakelab.leandrovillalba.sprint6.repository.IEmpleadorRepository;
 import cl.awakelab.leandrovillalba.sprint6.service.IEmpleadorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,4 +65,18 @@ public class EmpleadorImpl implements IEmpleadorService {
     public void eliminarEmpleador2(int idEmpleador) {
         objEmpleadorRepo.deleteById(idEmpleador);
     }
+
+    @Override
+    public Empleador crearEmpleadorDesdeUsuario(Usuario usuario) {
+        Empleador empleador = new Empleador();
+        empleador.setRun(usuario.getRun());
+        empleador.setNombre(usuario.getNombre());
+        empleador.setApellido1(usuario.getApellido1());
+        empleador.setApellido2(usuario.getApellido2());
+        empleador.setEmail(usuario.getEmail());
+        empleador.setTelefono(usuario.getTelefono());
+        empleador.setUsuario(usuario);
+        return objEmpleadorRepo.save(empleador);
+    }
+
 }
