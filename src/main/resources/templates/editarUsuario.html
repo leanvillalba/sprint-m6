@@ -32,15 +32,82 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/"
-                  >Home</a
+                <a class="nav-link active" aria-current="page" href="/bienvenida">Menú</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
+                  Usuario</a
+                >
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" th:href="@{/usuario/crearUsuario}">Agregar usuario</a></li>
+                  <li>
+                    <a class="dropdown-item" th:href="@{/usuario}">Ver usuarios</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Empleador
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" th:href="@{/empleador/crearEmpleador}">Agregar empleador</a>
+                  </li>
+                  <li>
+                    <Ver class="dropdown-item" th:href="@{/empleador/listaEmpleadores}">Ver empleadores</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Trabajador
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#">Agregar trabajador</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Ver trabajadores</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Liquidación
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Ver liquidación</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Nueva liquidación</a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/registro">Registrarse</a>
-              </li>
-              <li class="nav-item">
-                <a class="btn btn-primary" href="login">Iniciar Sesión</a>
+                <a class="btn btn-outline-secondary" href="/">Cerrar Sesión</a>
               </li>
             </ul>
           </div>

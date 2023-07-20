@@ -24,11 +24,11 @@ public class Trabajador {
     @Column
     private String email;
 
-    @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne (optional = false, fetch = FetchType.EAGER)
     @JoinColumn (name = "id_inst_prevision", nullable = false)
     private InstitucionPrevision institucionPrevision;
 
-    @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne (optional = false, fetch = FetchType.EAGER)
     @JoinColumn (name = "id_inst_salud", nullable = false)
     private InstitucionSalud institucionSalud;
 

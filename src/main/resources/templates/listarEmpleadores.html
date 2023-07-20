@@ -35,7 +35,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link active" aria-current="page" href="/bienvenida">Menú</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -48,13 +48,9 @@
                   Usuario</a
                 >
                 <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" th:href="@{/usuario/crearUsuario}">Agregar usuario</a></li>
                   <li>
-                    <a class="dropdown-item" href="/crearUsuario"
-                      >Agregar usuario</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="/usuario">Ver usuarios</a>
+                    <a class="dropdown-item" th:href="@{/usuario}">Ver usuarios</a>
                   </li>
                 </ul>
               </li>
@@ -68,25 +64,12 @@
                 >
                   Empleador
                 </a>
-                <input
-                  type="hidden"
-                  name="usuario.idUsuario"
-                  th:value="${usuario.idUsuario}"
-                />
                 <ul class="dropdown-menu">
                   <li>
-                    <a
-                      class="dropdown-item"
-                      th:href="@{/empleador/crearEmpleador}"
-                      >Agregar empleadador</a
-                    >
+                    <a class="dropdown-item" th:href="@{/empleador/crearEmpleador}">Agregar empleador</a>
                   </li>
                   <li>
-                    <a
-                      class="dropdown-item"
-                      th:href="@{/empleador/listaEmpleadores}"
-                      >Ver empleadores</a
-                    >
+                    <Ver class="dropdown-item" th:href="@{/empleador/listaEmpleadores}">Ver empleadores</a>
                   </li>
                 </ul>
               </li>
@@ -105,11 +88,7 @@
                     <a class="dropdown-item" href="#">Agregar trabajador</a>
                   </li>
                   <li>
-                    <a
-                      class="dropdown-item"
-                      th:href="@{/empleador/listaEmpleadores}"
-                      >Ver trabajadores</a
-                    >
+                    <a class="dropdown-item" href="#">Ver trabajadores</a>
                   </li>
                 </ul>
               </li>
@@ -131,7 +110,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="btn btn-primary" href="/">Cerrar Sesión</a>
+                <a class="btn btn-outline-secondary" href="/">Cerrar Sesión</a>
               </li>
             </ul>
           </div>

@@ -46,10 +46,7 @@ public class EmpleadorController {
         Usuario usuario = objUsuarioService.buscarUsuarioPorId(empleador.getUsuario().getIdUsuario());
         empleador.setUsuario(usuario);
         objEmpleadorService.crearEmpleador(empleador);
-        // Obtengo el idUsuario asociado al Empleador actualizado
-        int idUsuario = empleador.getUsuario().getIdUsuario();
-        // Redirecciono a la lista de empleadores del Usuario con su respectivo idUsuario
-        return "redirect:/empleador/listaEmpleadores/" + idUsuario;
+        return "redirect:/empleador/listaEmpleadores";
     }
 
     @GetMapping("/{idEmpleador}/editar")
