@@ -14,4 +14,7 @@ public interface IUsuarioService {
 
     void eliminarUsuario2(int idUsuario);
 
+    int autenticacionUsuario(int run, String clave);
+
+
 }

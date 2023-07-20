@@ -34,7 +34,6 @@ public class UsuarioImpl implements IUsuarioService {
         usuario.setApellido1(usuarioActualizar.getApellido1());
         usuario.setApellido2(usuarioActualizar.getApellido2());
         usuario.setEmail(usuarioActualizar.getEmail());
-        usuario.setFechaCreacion(usuarioActualizar.getFechaCreacion()); // X
         usuario.setTelefono(usuarioActualizar.getTelefono());
         return objUsuarioRepo.save(usuario);
     }
@@ -47,7 +46,6 @@ public class UsuarioImpl implements IUsuarioService {
         usuario.setApellido1(usuarioActualizar.getApellido1());
         usuario.setApellido2(usuarioActualizar.getApellido2());
         usuario.setEmail(usuarioActualizar.getEmail());
-        usuario.setFechaCreacion(usuarioActualizar.getFechaCreacion());
         usuario.setTelefono(usuarioActualizar.getTelefono());
         return objUsuarioRepo.save(usuario);
     }
@@ -59,6 +57,17 @@ public class UsuarioImpl implements IUsuarioService {
     @Override
     public void eliminarUsuario2(int idUsuario) {
         objUsuarioRepo.deleteById(idUsuario);
+    }
+
+    @Override
+    public int autenticacionUsuario(int run, String clave) {
+        List<Usuario> listaUsuarios = objUsuarioRepo.findAll();
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getRun() == run && usuario.getClave().equals(clave)) {
+                return usuario.getIdUsuario();
+            }
+        }
+        return 0;
     }
 
 }

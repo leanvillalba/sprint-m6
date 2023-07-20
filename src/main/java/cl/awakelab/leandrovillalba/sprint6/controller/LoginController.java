@@ -2,6 +2,7 @@ package cl.awakelab.leandrovillalba.sprint6.controller;
 
 import cl.awakelab.leandrovillalba.sprint6.entity.Usuario;
 import cl.awakelab.leandrovillalba.sprint6.service.IUsuarioService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,22 +21,24 @@ public class LoginController {
     private IUsuarioService objUsuarioService;
 
     @GetMapping
-    public String logIn(){
+    public String logIn() {
         return "login";
     }
+
     @PostMapping
-    public String iniciarSesion(@RequestParam("runLogin") int run, @RequestParam("passwordLogin") String clave, Model model) {
+    public String iniciarSesion(@RequestParam("runLogin") int run, @RequestParam("passwordLogin") String clave, HttpSession session) {
 
-        List<Usuario> listaUsuarios = objUsuarioService.listarUsuarios();
+        // Lógica de autenticación, obtengo el idUsuario del usuario autenticado
+        int idUsuario = objUsuarioService.autenticacionUsuario(run, clave);
 
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getRun() == run && usuario.getClave().equals(clave)) {
-                model.addAttribute("usuario", usuario);
-                return "bienvenida";
-            }
+        if (idUsuario != 0) {
+            // Si la autenticación fue exitosa, guardo el idUsuario en la sesión
+            session.setAttribute("idUsuario", idUsuario);
+            return "redirect:/bienvenida";
+        } else {
+            // Si la autenticación falla, redirige al login nuevamente
+            return "redirect:/login";
         }
-        return "redirect:/login";
     }
-
-
 }
+

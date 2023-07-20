@@ -4,6 +4,7 @@ import cl.awakelab.leandrovillalba.sprint6.entity.Empleador;
 import cl.awakelab.leandrovillalba.sprint6.entity.Usuario;
 import cl.awakelab.leandrovillalba.sprint6.service.IEmpleadorService;
 import cl.awakelab.leandrovillalba.sprint6.service.IUsuarioService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,19 +21,20 @@ public class EmpleadorController {
     @Autowired
     IUsuarioService objUsuarioService;
 
-    @GetMapping("/listaEmpleadores/{idUsuario}")
-    public String listarEmpleadores(@PathVariable int idUsuario, Model model) {
+    @GetMapping("/listaEmpleadores")
+    public String listarEmpleadores(HttpSession session, Model model) {
+        int idUsuario = (int) session.getAttribute("idUsuario");
         List<Empleador> listaEmpleadores = objEmpleadorService.listarEmpleadores();
         Usuario usuario = objUsuarioService.buscarUsuarioPorId(idUsuario);
         model.addAttribute("empleadores", listaEmpleadores);
-        // Para que pueda usar el idUsuario en vista listarEmpleadores y pueda redirigir correctamente en los links
         model.addAttribute("usuario", usuario);
         return "listarEmpleadores";
     }
 
-
-    @GetMapping("/crearEmpleador/{idUsuario}")
-    public String mostrarFormularioCrearEmpleador(@PathVariable int idUsuario, Model model){
+    @GetMapping("/crearEmpleador")
+    public String mostrarFormularioCrearEmpleador(HttpSession session, Model model) {
+        // Obtengo el valor del atributo idUsuario de la sesión creada en el login
+        int idUsuario = (int) session.getAttribute("idUsuario");
         Usuario usuario = objUsuarioService.buscarUsuarioPorId(idUsuario);
         model.addAttribute("usuario", usuario);
         model.addAttribute("empleador", new Empleador());
@@ -40,14 +42,14 @@ public class EmpleadorController {
     }
 
     @PostMapping("/crearEmpleador")
-    public String crearEmpleador(@ModelAttribute("empleador") Empleador empleador, RedirectAttributes redirectAttributes) {
+    public String crearEmpleador(@ModelAttribute("empleador") Empleador empleador) {
         Usuario usuario = objUsuarioService.buscarUsuarioPorId(empleador.getUsuario().getIdUsuario());
         empleador.setUsuario(usuario);
         objEmpleadorService.crearEmpleador(empleador);
-        // Guardo idUsuario para poder redireccionar a la lista de empleadores + id del Usuario que creará los empleadores
-        redirectAttributes.addAttribute("idUsuario", empleador.getUsuario().getIdUsuario());
-
-        return "redirect:/empleador/listaEmpleadores/{idUsuario}";
+        // Obtengo el idUsuario asociado al Empleador actualizado
+        int idUsuario = empleador.getUsuario().getIdUsuario();
+        // Redirecciono a la lista de empleadores del Usuario con su respectivo idUsuario
+        return "redirect:/empleador/listaEmpleadores/" + idUsuario;
     }
 
     @GetMapping("/{idEmpleador}/editar")
@@ -60,21 +62,18 @@ public class EmpleadorController {
     }
 
     @PostMapping("/{idEmpleador}/editar")
-    public String actualizarEmpleador(@PathVariable int idEmpleador, @ModelAttribute Empleador empleador, RedirectAttributes redirectAttributes){
+    public String actualizarEmpleador(@ModelAttribute Empleador empleador) {
         objEmpleadorService.actualizarEmpleador2(empleador);
-        // Guardo idUsuario para poder redireccionar a la lista de empleadores + id del Usuario que creará los empleadores
-        redirectAttributes.addAttribute("idUsuario", empleador.getUsuario().getIdUsuario());
-        return "redirect:/empleador/listaEmpleadores/{idUsuario}";
+        return "redirect:/empleador/listaEmpleadores";
     }
 
     @GetMapping("/{idEmpleador}/eliminar")
-    public String eliminarEmpleador(@PathVariable int idEmpleador, RedirectAttributes redirectAttributes) {
+    public String eliminarEmpleador(@PathVariable int idEmpleador) {
         Empleador empleador = objEmpleadorService.buscarEmpleardorPorId(idEmpleador);
-        int idUsuario = empleador.getUsuario().getIdUsuario();
         objEmpleadorService.eliminarEmpleador2(idEmpleador);
-        redirectAttributes.addAttribute("idUsuario", idUsuario);
-        return "redirect:/empleador/listaEmpleadores/{idUsuario}";
+        return "redirect:/empleador/listaEmpleadores";
     }
+
 
 
 

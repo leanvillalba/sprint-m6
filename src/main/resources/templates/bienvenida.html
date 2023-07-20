@@ -63,10 +63,10 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" href="#">Agregar empleadador</a>
+                    <a class="dropdown-item" th:href="@{/empleador/crearEmpleador}">Agregar empleador</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#"></a>Ver empleadores</a>
+                    <a class="dropdown-item" th:href="@{/empleador/listaEmpleadores}"></a>Ver empleadores</a>
                   </li>
                 </ul>
               </li>
@@ -132,7 +132,7 @@
                 Crear Usuario
               </button>
             </a>
-            <a th:href="@{/empleador/crearEmpleador/{idUsuario}(idUsuario=${usuario.idUsuario})}">
+            <a th:href="@{/empleador/crearEmpleador}">
               <button class="btn btn-primary btn-lg" type="button">
                 Crear Empleador
               </button>
@@ -152,7 +152,7 @@
                 Ver y/o Editar Usuarios
               </button>
             </a>
-            <a th:href="@{/empleador/listaEmpleadores/{idUsuario}(idUsuario=${usuario.idUsuario})}">
+            <a th:href="@{/empleador/listaEmpleadores}">
               <button class="btn btn-primary btn-lg" type="button">
                 Ver y/o Editar Empleador
               </button>
