@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Trabajador</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg" style="width: 100%">
+        <div class="container" style="background-color: #f8f8f8">
+          <a class="navbar-brand" href="/">Logo</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/registro">Registrarse</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-primary" href="/login">Iniciar Sesión</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section class="vh-100">
+      <div class="container py-5 min-vh-100">
+        <h3 style="text-align: center">Editar Trabajador</h3>
+        <div class="row d-flex align-items-center justify-content-center h-100">
+          <div class="col-md-7 col-lg-5 col-xl-5">
+            <form th:action="@{/trabajador/{idtrabajador}/editar(idtrabajador=${trabajador.idtrabajador})}" th:object="${trabajador}" method="POST">
+
+              
+                  
+                  <input
+                  type="hidden"
+                  name="run"
+                  class="form-control form-control-lg"
+                  th:value="${trabajador.run}"
+                  required
+                  />
+             
+
+              <!-- Nombre input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  class="form-control form-control-lg"
+                  th:value="${trabajador.nombre}"
+                  required
+                />
+              </div>
+
+              <!-- Apellido1 input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Apellido 1</label>
+                <input
+                  type="text"
+                  name="apellido1"
+                  class="form-control form-control-lg"
+                  th:value="${trabajador.apellido1}"
+                  required
+                />
+              </div>
+
+              <!-- Apellido2 input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Apellido 2 (Opcional)</label>
+                <input
+                  type="text"
+                  name="apellido2"
+                  class="form-control form-control-lg"
+                  th:value="${trabajador.apellido2}"
+                />
+              </div>
+
+               <!-- Dirección -->
+               <div class="form-outline mb-4">
+                <label class="form-label">Dirección</label>
+                <input
+                  type="text"
+                  name="direccion"
+                  class="form-control form-control-lg"
+                  th:value="${trabajador.direccion}"
+                />
+              </div>
+
+              
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Email</label>
+                <input
+                type="email"
+                name="email"
+                class="form-control form-control-lg"
+                th:value="${trabajador.email}"
+                required
+                />
+              </div>
+              
+              <!-- Campo oculto para el idUsuario -->
+              <input type="hidden" name="usuario.idUsuario" th:value="${usuario.idUsuario}" />
+
+              <!-- Teléfono input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Teléfono</label>
+                <input
+                  type="number"
+                  name="telefono"
+                  class="form-control form-control-lg"
+                  th:value="${trabajador.telefono}"
+                />
+              </div>
+
+              <!-- Campo de selección de Institución de Salud -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Institución de Salud</label>
+                <select name="institucionSalud" class="form-select form-control-lg">
+                  <option value="Fonasa" th:selected="${trabajador.institucionSalud == 'Fonasa'}">Fonasa</option>
+                </select>
+              </div>
+
+              <!-- Campo de selección de AFP -->
+              <div class="form-outline mb-4">
+                <label class="form-label">AFP</label>
+                <select name="institucionPrevision" class="form-select form-control-lg">
+                  <option value="" disabled selected>Seleccione AFP</option>
+                  <option value="Capital" th:selected="${trabajador.institucionPrevision == 'Capital'}">Capital</option>
+                  <option value="Provida" th:selected="${trabajador.institucionPrevision == 'Provida'}">Provida</option>
+                  <option value="Plan Vital" th:selected="${trabajador.institucionPrevision == 'Plan Vital'}">Plan Vital</option>
+                  <option value="Habitat" th:selected="${trabajador.institucionPrevision == 'Habitat'}">Habitat</option>
+                  <option value="Uno" th:selected="${trabajador.institucionPrevision == 'Uno'}">Uno</option>
+                  <option value="Modelo" th:selected="${trabajador.institucionPrevision == 'Modelo'}">Modelo</option>
+                </select>
+              </div>
+              
+              <br />
+            <br />
+
+              <!-- Submit button -->
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg btn-block w-100"
+              >
+                Editar Trabajador
+              </button>
+              <br><br>
+
+              <a th:href="@{/trabajador/listatrabajadores}">
+                <button
+                  class="btn btn-secondary btn-lg btn-block w-100"
+                  type="button"
+                >
+                  Cancelar
+                </button>
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br /><br />
+
+    <!--
+
+        <div class="container">
+            <footer style="background-color: #ebebeb">
+                <div class="container p-4">
+          <div class="row">
+            <div class="text-center p-3">
+              <h5 class="mb-3" style="letter-spacing: 2px">Sprint Módulo 6</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-3">© 2023 Bootcamp Java</div>
+</footer>
+-->
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"
+      ></script>
+    </div>
+  </body>
+</html>
