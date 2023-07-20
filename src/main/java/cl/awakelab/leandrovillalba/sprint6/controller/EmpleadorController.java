@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -60,14 +59,14 @@ public class EmpleadorController {
 
     @PostMapping("/{idEmpleador}/editar")
     public String actualizarEmpleador(@ModelAttribute Empleador empleador) {
-        objEmpleadorService.actualizarEmpleador2(empleador);
+        objEmpleadorService.actualizarEmpleador(empleador);
         return "redirect:/empleador/listaEmpleadores";
     }
 
     @GetMapping("/{idEmpleador}/eliminar")
     public String eliminarEmpleador(@PathVariable int idEmpleador) {
         Empleador empleador = objEmpleadorService.buscarEmpleardorPorId(idEmpleador);
-        objEmpleadorService.eliminarEmpleador2(idEmpleador);
+        objEmpleadorService.eliminarEmpleador(idEmpleador);
         return "redirect:/empleador/listaEmpleadores";
     }
 

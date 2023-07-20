@@ -31,20 +31,7 @@ public class EmpleadorImpl implements IEmpleadorService {
     }
 
     @Override
-    public Empleador actualizarEmpleador(Empleador empleadorActualizar, int idEmpleador) {
-        Empleador empleador = objEmpleadorRepo.findById(idEmpleador).orElseThrow(() -> new NoSuchElementException("Empleador no encontrado"));
-        empleador.setRun(empleadorActualizar.getRun());
-        empleador.setNombre(empleadorActualizar.getNombre());
-        empleador.setApellido1(empleadorActualizar.getApellido1());
-        empleador.setApellido2(empleadorActualizar.getApellido2());
-        empleador.setDireccion(empleadorActualizar.getDireccion());
-        empleador.setEmail(empleadorActualizar.getEmail());
-        empleador.setTelefono(empleadorActualizar.getTelefono());
-        return objEmpleadorRepo.save(empleador);
-    }
-
-    @Override
-    public Empleador actualizarEmpleador2(Empleador empleadorActualizar) {
+    public Empleador actualizarEmpleador(Empleador empleadorActualizar) {
         Empleador empleador = objEmpleadorRepo.findById(empleadorActualizar.getIdEmpleador()).orElseThrow(() -> new NoSuchElementException("Empleador no encontrado"));
         empleador.setRun(empleadorActualizar.getRun());
         empleador.setNombre(empleadorActualizar.getNombre());
@@ -57,12 +44,7 @@ public class EmpleadorImpl implements IEmpleadorService {
     }
 
     @Override
-    public void eliminarEmpleador(Empleador empleador) {
-        objEmpleadorRepo.delete(empleador);
-    }
-
-    @Override
-    public void eliminarEmpleador2(int idEmpleador) {
+    public void eliminarEmpleador(int idEmpleador) {
         objEmpleadorRepo.deleteById(idEmpleador);
     }
 
