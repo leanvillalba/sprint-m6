@@ -133,7 +133,7 @@
                   placeholder="Ingrese su run sin guión ni dígito verificador"
                 />
               </div>
-
+            
               <!-- Nombre input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Nombre</label>
@@ -145,7 +145,7 @@
                   placeholder="Ingrese su nombre"
                 />
               </div>
-
+            
               <!-- Apellido1 input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Apellido 1</label>
@@ -157,7 +157,7 @@
                   placeholder="Ingrese su primer apellido"
                 />
               </div>
-
+            
               <!-- Apellido2 input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Apellido 2 (Opcional)</label>
@@ -168,34 +168,25 @@
                   placeholder="Ingrese su segundo apellido"
                 />
               </div>
-
-               <!-- Dirección -->
-               <div class="form-outline mb-4">
-                <label class="form-label">Dirección</label>
-                <input
-                  type="text"
-                  name="direccion"
-                  class="form-control form-control-lg"
-                  placeholder="Ingrese su dirección"
-                />
-              </div>
-
-              
+            
+             <!-- Campo de selección de Empleadores -->
+              <select name="empleadorId" class="form-select form-control-lg" required>
+                <option>Nombre de Empleador</option>
+                <option th:each="empleador : ${empleadores}" th:value="${empleador.idEmpleador}" th:text="${empleador.nombre + ' ' + empleador.apellido1}"></option>
+              </select>           
+            
               <!-- Email input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Email</label>
                 <input
-                type="email"
-                name="email"
-                class="form-control form-control-lg"
-                required
-                placeholder="Ingrese su email"
+                  type="email"
+                  name="email"
+                  class="form-control form-control-lg"
+                  required
+                  placeholder="Ingrese su email"
                 />
               </div>
-              
-              <!-- Campo oculto para el idUsuario -->
-              <input type="hidden" name="usuario.idUsuario" th:value="${usuario.idUsuario}" />
-
+            
               <!-- Teléfono input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Teléfono</label>
@@ -206,51 +197,35 @@
                   placeholder="Ingrese su teléfono"
                 />
               </div>
-
-                <!-- Campo de selección de Institución de Salud -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Institución de Salud</label>
-                <select name="institucionSalud" class="form-select form-control-lg">
-                  <option value="Fonasa">Fonasa</option>
+            
+              <!-- Campo de selección de Institución de Salud --> 
+                <div class="form-outline mb-4">
+                  <label for="institucionSalud" class="form-label">Institución de Salud</label>
+                <select name="institucionSalud" class="form-select form-control-lg" required>
+                  <option th:each="institucion : ${institucionesSalud}" th:value="${institucion.idInstitucionSalud}" th:text="${institucion.descripcion}"></option>
                 </select>
               </div>
-
-              <!-- Campo de selección de AFP -->
-              <div class="form-outline mb-4">
-                <label class="form-label">AFP</label>
-                <select name="afp" class="form-select form-control-lg">
-                  <option>Seleccione AFP</option>
-                  <option value="Capital">Capital</option>
-                  <option value="Provida">Provida</option>
-                  <option value="Plan Vital">Plan Vital</option>
-                  <option value="Habitat">Habitat</option>
-                  <option value="Uno">Uno</option>
-                  <option value="Modelo">Modelo</option>
-                </select>
-              </div>
-
-                        
+            
+              <!-- Campo de AFP -->
+                <div class="form-outline mb-4">
+                  <label for="institucionPrevision" class="form-label">AFP</label>
+                  <select name="institucionPrevision" class="form-select form-control-lg" required>
+                    <option th:each="institucion : ${institucionesPrevision}" th:value="${institucion.idInstitucionPrevision}" th:text="${institucion.descripcion}"></option>
+                  </select>
+                </div>
+              
               <br />
-            <br />
-
+              <br />
+            
               <!-- Submit button -->
-              <button
-                type="submit"
-                class="btn btn-primary btn-lg btn-block w-100"
-              >
-                Agregar Trabajador
-              </button>
+              <button type="submit" class="btn btn-primary btn-lg btn-block w-100">Agregar Trabajador</button>
               <br><br>
-
-              <a th:href="@{/empleador/listaEmpleadores/{idUsuario}(idUsuario=${usuario.idUsuario})}">
-                <button
-                  class="btn btn-secondary btn-lg btn-block w-100"
-                  type="button"
-                >
-                  Cancelar
-                </button>
+            
+              <a href="#">
+                <button class="btn btn-secondary btn-lg btn-block w-100" type="button">Cancelar</button>
               </a>
             </form>
+            
           </div>
         </div>
       </div>

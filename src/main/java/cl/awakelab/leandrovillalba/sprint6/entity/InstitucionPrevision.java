@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "institucion_prevision")
 public class InstitucionPrevision {
     @Id
-    @Column (nullable = false)
+    @Column (name = "id_inst_prevision", nullable = false)
     private int idInstitucionPrevision;
     @Column (length = 50, nullable = false)
     private String descripcion;

@@ -70,11 +70,6 @@ public class EmpleadorController {
         return "redirect:/empleador/listaEmpleadores";
     }
 
-
-
-
-
-
 }
 
 
