@@ -36,6 +36,8 @@ public class TrabajadorImpl implements ITrabajadorService {
         trabajador.setApellido1(trabajadorActualizar.getApellido1());
         trabajador.setApellido2(trabajadorActualizar.getApellido2());
         trabajador.setEmail(trabajadorActualizar.getEmail());
+        trabajador.setInstitucionPrevision(trabajadorActualizar.getInstitucionPrevision());
+        trabajador.setInstitucionSalud(trabajadorActualizar.getInstitucionSalud());
         trabajador.setTelefono(trabajadorActualizar.getTelefono());
         return objTrabajadorRepo.save(trabajador);
     }
