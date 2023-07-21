@@ -60,8 +60,49 @@ public class TrabajadorController {
         trabajador.setListaEmpleadores(listaEmpleadores);
 
         objTrabajadorService.crearTrabajador(trabajador);
-        // Todavía no creo el listarTrabajador()
-        return "redirect:/bienvenida";
+        return "redirect:/trabajador/listaTrabajadores";
     }
+
+    @GetMapping("/listaTrabajadores")
+    public String listarTrabajadores(HttpSession session, Model model) {
+        int idUsuario = (int) session.getAttribute("idUsuario");
+        List<Trabajador> listaTrabajadores = objTrabajadorService.listarTrabajadores();
+        Usuario usuario = objUsuarioService.buscarUsuarioPorId(idUsuario);
+        model.addAttribute("trabajadores", listaTrabajadores);
+        model.addAttribute("usuario", usuario);
+        return "listarTrabajadores";
+    }
+
+    @GetMapping("/{idTrabajador}/editar")
+    public String mostrarFormularioEditarTrabajador(@PathVariable int idTrabajador, Model model) {
+        Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
+        model.addAttribute("trabajador", trabajador);
+        List<InstitucionSalud> institucionesSalud = objInstSaludService.listarInstitucionesSalud();
+        List<InstitucionPrevision> institucionesPrevision = objInstPrevService.listarInstitucionesPrevision();
+        model.addAttribute("institucionesSalud", institucionesSalud);
+        model.addAttribute("institucionesPrevision", institucionesPrevision);
+        return "editarTrabajador";
+
+    }
+
+    @PostMapping("/{idTrabajador}/editar")
+    public String actualizarTrabajador(@ModelAttribute Trabajador trabajador, @RequestParam int institucionPrevision, @RequestParam int institucionSalud){
+        InstitucionSalud instSalud = objInstSaludService.buscarInstitucionSaludPorId(institucionSalud);
+        InstitucionPrevision instPrev = objInstPrevService.buscarInstitucionPrevisionPorId(institucionPrevision);
+        // System.out.println("ID INST: " + instPrev + " " + instSalud);
+        trabajador.setInstitucionSalud(instSalud);
+        trabajador.setInstitucionPrevision(instPrev);
+        objTrabajadorService.actualizarTrabajador(trabajador);
+        return "redirect:/trabajador/listaTrabajadores";
+    }
+
+    @GetMapping("/{idTrabajador}/eliminar")
+    public String eliminarTrabajador(@PathVariable int idTrabajador){
+        Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(idTrabajador);
+        objTrabajadorService.eliminarTrabajador(idTrabajador);
+        return "redirect:/trabajador/listaTrabajadores";
+    }
+
+
 
 }

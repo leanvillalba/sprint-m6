@@ -173,19 +173,19 @@
             </thead>
             <tbody>
               <tr th:each="trabajador : ${trabajadores}">
-                <td th:text="${trabajador.idtrabajador}"></td>
+                <td th:text="${trabajador.idTrabajador}"></td>
                 <td th:text="${trabajador.run}"></td>
                 <td th:text="${trabajador.nombre}"></td>
                 <td th:text="${trabajador.apellido1}"></td>
                 <td th:text="${trabajador.email}"></td>
                 <td class="text-center">
                   <a
-                    th:href="@{/trabajador/{idtrabajador}/editar(idtrabajador=${trabajador.idtrabajador})}"
+                    th:href="@{/trabajador/{idTrabajador}/editar(idTrabajador=${trabajador.idTrabajador})}"
                     class="m-2 btn btn-info"
                     >Editar</a
                   >
                   <a
-                    th:href="@{/trabajador/{idtrabajador}/eliminar(idtrabajador=${trabajador.idtrabajador})}"
+                    th:href="@{/trabajador/{idTrabajador}/eliminar(idTrabajador=${trabajador.idTrabajador})}"
                     class="m-2 btn btn-danger"
                     >Eliminar</a
                   >

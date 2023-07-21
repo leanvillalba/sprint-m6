@@ -29,19 +29,7 @@ public class TrabajadorImpl implements ITrabajadorService {
     }
 
     @Override
-    public Trabajador actualizarTrabajador(Trabajador trabajadorActualizar, int idTrabajador) {
-        Trabajador trabajador = objTrabajadorRepo.findById(idTrabajador).orElseThrow(() -> new NoSuchElementException("Trabajador no encontrado"));
-        trabajador.setRun(trabajadorActualizar.getRun());
-        trabajador.setNombre(trabajadorActualizar.getNombre());
-        trabajador.setApellido1(trabajadorActualizar.getApellido1());
-        trabajador.setApellido2(trabajadorActualizar.getApellido2());
-        trabajador.setEmail(trabajadorActualizar.getEmail());
-        trabajador.setTelefono(trabajadorActualizar.getTelefono());
-        return objTrabajadorRepo.save(trabajador);
-    }
-
-    @Override
-    public Trabajador actualizarTrabajador2(Trabajador trabajadorActualizar) {
+    public Trabajador actualizarTrabajador(Trabajador trabajadorActualizar) {
         Trabajador trabajador = objTrabajadorRepo.findById(trabajadorActualizar.getIdTrabajador()).orElseThrow(() -> new NoSuchElementException("Trabajador no encontrado"));
         trabajador.setRun(trabajadorActualizar.getRun());
         trabajador.setNombre(trabajadorActualizar.getNombre());
@@ -53,12 +41,7 @@ public class TrabajadorImpl implements ITrabajadorService {
     }
 
     @Override
-    public void eliminarTrabajador(Trabajador trabajador) {
-        objTrabajadorRepo.delete(trabajador);
-        }
-
-    @Override
-    public void eliminarTrabajador2(int idTrabajador) {
+    public void eliminarTrabajador(int idTrabajador) {
         objTrabajadorRepo.deleteById(idTrabajador);
     }
 }
