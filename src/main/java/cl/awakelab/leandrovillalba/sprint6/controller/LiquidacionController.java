@@ -77,6 +77,25 @@ public class LiquidacionController {
 
     }
 
+    @GetMapping("/listaLiquidaciones")
+    public String listarLiquidaciones(HttpSession session, Model model) {
+        //int idUsuario = (int) session.getAttribute("idUsuario");
+        List<Liquidacion> listaLiquidaciones = objLiquidacionService.listarLiquidaciones();
+        model.addAttribute("liquidaciones", listaLiquidaciones);
+        return "listarLiquidaciones";
+    }
+
+    @GetMapping("{idLiquidacion}/eliminar")
+    public String eliminarLiquidacion(@PathVariable long idLiquidacion) {
+        Liquidacion liquidacion = objLiquidacionService.buscarLiquidacionPorId(idLiquidacion);
+        objLiquidacionService.eliminarLiquidacion2(idLiquidacion);
+        return "redirect:/liquidacion/listaLiquidaciones";
+    }
+
+
+
+
+
 
 
 
