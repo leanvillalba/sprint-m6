@@ -4,275 +4,164 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crear Usuario</title>
+    <!-- <link rel="stylesheet" href="/css/style.css" type="text/css">
+    -->
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <link href="styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="ruta/a/font-awesome.css" />
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg" style="width: 100%">
-        <div class="container" style="background-color: #f8f8f8">
-          <a class="navbar-brand" href="/">Logo</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+  <header th:replace="plantillas/template2 :: header2"></header>
+
+          <section class="vh-100">
+        <div class="container py-5 min-vh-100">
+          <h3 style="text-align: center">Crear Usuario</h3>
+          <div
+            class="row d-flex align-items-center justify-content-center h-100"
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/bienvenida">Menú</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Usuario</a
-                >
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" th:href="@{/usuario/crearUsuario}">Agregar usuario</a></li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/usuario}">Ver usuarios</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Empleador
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" th:href="@{/empleador/crearEmpleador}">Agregar empleador</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/empleador/listaEmpleadores}">Ver empleadores</a>                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Trabajador
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Agregar trabajador</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Ver trabajadores</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Liquidación
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ver liquidación</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Nueva liquidación</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="btn btn-outline-secondary" href="/">Cerrar Sesión</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+            <div class="col-md-7 col-lg-5 col-xl-5">
+              <form action="/usuario/crearUsuario" method="POST">
+                <!-- Run input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label">Run</label>
+                  <input
+                    type="number"
+                    name="run"
+                    class="form-control form-control-lg"
+                    required
+                    placeholder="Ingrese su run sin guión ni dígito verificador"
+                  />
+                </div>
 
-    <section class="vh-100">
-      <div class="container py-5 min-vh-100">
-        <h3 style="text-align: center">Crear Usuario</h3>
-        <div class="row d-flex align-items-center justify-content-center h-100">
-          <div class="col-md-7 col-lg-5 col-xl-5">
-            <form action="/usuario/crearUsuario" method="POST">
-              <!-- Run input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Run</label>
-                <input
-                  type="number"
-                  name="run"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su run sin guión ni dígito verificador"
-                />
-              </div>
+                <!-- Nombre input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label">Nombre</label>
+                  <input
+                    type="text"
+                    name="nombre"
+                    class="form-control form-control-lg"
+                    required
+                    placeholder="Ingrese su nombre"
+                  />
+                </div>
 
-              <!-- Nombre input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Nombre</label>
-                <input
-                  type="text"
-                  name="nombre"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su nombre"
-                />
-              </div>
+                <!-- Apellido1 input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label">Apellido 1</label>
+                  <input
+                    type="text"
+                    name="apellido1"
+                    class="form-control form-control-lg"
+                    required
+                    placeholder="Ingrese su primer apellido"
+                  />
+                </div>
 
-              <!-- Apellido1 input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Apellido 1</label>
-                <input
-                  type="text"
-                  name="apellido1"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su primer apellido"
-                />
-              </div>
+                <!-- Apellido2 input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label">Apellido 2 (Opcional)</label>
+                  <input
+                    type="text"
+                    name="apellido2"
+                    class="form-control form-control-lg"
+                    placeholder="ingrese su segundo apellido"
+                  />
+                </div>
 
-              <!-- Apellido2 input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Apellido 2 (Opcional)</label>
-                <input
-                  type="text"
-                  name="apellido2"
-                  class="form-control form-control-lg"
-                  placeholder="ingrese su segundo apellido"
-                />
-              </div>
+                <!-- Teléfono input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label">Teléfono</label>
+                  <input
+                    type="text"
+                    name="telefono"
+                    class="form-control form-control-lg"
+                    placeholder="Ingrese su teléfono"
+                  />
+                </div>
 
-              <!-- Teléfono input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Teléfono</label>
-                <input
-                  type="text"
-                  name="telefono"
-                  class="form-control form-control-lg"
-                  placeholder="Ingrese su teléfono"
-                />
-              </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control form-control-lg"
+                    required
+                    placeholder="Ingrese su email"
+                  />
+                </div>
 
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su email"
-                />
-              </div>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <label class="form-label">Contraseña</label>
+                  <input
+                    type="password"
+                    name="clave"
+                    class="form-control form-control-lg"
+                    required
+                    placeholder="Ingrese su contraseña"
+                  />
+                </div>
 
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Contraseña</label>
-                <input
-                  type="password"
-                  name="clave"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su contraseña"
-                />
-              </div>
+                <!-- Opciones de selección -->
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="perfil"
+                    id="inlineRadio1"
+                    value="3"
+                  />
+                  <label class="form-check-label" for="inlineRadio1"
+                    >Empleador</label
+                  >
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="perfil"
+                    id="inlineRadio2"
+                    value="2"
+                  />
+                  <label class="form-check-label" for="inlineRadio2"
+                    >Contador</label
+                  >
+                </div>
 
-               <!-- Opciones de selección -->
-               <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="perfil"
-                  id="inlineRadio1"
-                  value="3"
-                  
-                />
-                <label class="form-check-label" for="inlineRadio1">Empleador</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="perfil"
-                  id="inlineRadio2"
-                  value="2"
-             
-                />
-                <label class="form-check-label" for="inlineRadio2">Contador</label>
-              </div>
-              
-              <br />
-            <br />
+                <br />
+                <br />
 
-              <!-- Submit button -->
-              <button
-                type="submit"
-                class="btn btn-primary btn-lg btn-block w-100"
-              >
-                Registrar
-              </button>
-              <br><br>
-
-              <a th:href="@{/usuario}">
+                <!-- Submit button -->
                 <button
-                  class="btn btn-secondary btn-lg btn-block w-100"
-                  type="button"
+                  type="submit"
+                  class="btn btn-primary btn-lg btn-block w-100"
                 >
-                  Cancelar
+                  Registrar
                 </button>
-              </a>
-            </form>
+                <br /><br />
+
+                <a th:href="@{/bienvenida}">
+                  <button
+                    class="btn btn-secondary btn-lg btn-block w-100"
+                    type="button"
+                  >
+                    Cancelar
+                  </button>
+                </a>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <br /><br />
-
-    <!--
-
-        <div class="container">
-            <footer style="background-color: #ebebeb">
-                <div class="container p-4">
-          <div class="row">
-            <div class="text-center p-3">
-              <h5 class="mb-3" style="letter-spacing: 2px">Sprint Módulo 6</h5>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-        </div>
+      </section>
+      <br /><br />
     </div>
-    <div class="text-center p-3">© 2023 Bootcamp Java</div>
-</footer>
--->
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"
-      ></script>
-    </div>
+    <script th:replace="plantillas/template :: script"></script>
   </body>
 </html>

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -47,11 +46,9 @@ public class UsuarioController {
         usuario.setPerfil(perfil);
         objUsuarioService.crearUsuario(usuario);
         model.addAttribute("usuario", usuario);
-
         if (idPerfil == 3){
             Empleador empleador = objEmpleadorService.crearEmpleadorDesdeUsuario(usuario);
         }
-
         return "bienvenida";
     }
 
@@ -61,15 +58,11 @@ public class UsuarioController {
         perfil.setIdPerfil(idPerfil);
         usuario.setPerfil(perfil);
         objUsuarioService.crearUsuario(usuario);
-
         if (idPerfil == 3){
             Empleador empleador = objEmpleadorService.crearEmpleadorDesdeUsuario(usuario);
         }
-
         return "redirect:/login";
     }
-
-
 
     @GetMapping("/{idUsuario}/editar")
     public String mostrarFormularioEditarUsuario(@PathVariable int idUsuario, Model model){
@@ -79,7 +72,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/{idUsuario}/editar")
-    public String actualizarUsuario(@PathVariable int idUsuario, @ModelAttribute Usuario usuario){
+    public String actualizarUsuario(@ModelAttribute Usuario usuario){
         objUsuarioService.actualizarUsuario2(usuario);
         return "redirect:/usuario";
     }
@@ -89,7 +82,5 @@ public class UsuarioController {
         objUsuarioService.eliminarUsuario2(idUsuario);
         return "redirect:/usuario";
     }
-
-
 
 }

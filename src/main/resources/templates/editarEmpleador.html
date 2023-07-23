@@ -4,134 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Empleador</title>
+    <!-- <link rel="stylesheet" href="/css/style.css" type="text/css">
+    -->
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <link href="styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="ruta/a/font-awesome.css" />
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg" style="width: 100%">
-        <div class="container" style="background-color: #f8f8f8">
-          <a class="navbar-brand" href="/">Logo</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/bienvenida">Menú</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Usuario</a
-                >
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" th:href="@{/usuario/crearUsuario}">Agregar usuario</a></li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/usuario}">Ver usuarios</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Empleador
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" th:href="@{/empleador/crearEmpleador}">Agregar empleador</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/empleador/listaEmpleadores}">Ver empleadores</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Trabajador
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Agregar trabajador</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Ver trabajadores</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Liquidación
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ver liquidación</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Nueva liquidación</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="btn btn-outline-secondary" href="/">Cerrar Sesión</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <section class="vh-100">
+    <header th:replace="plantillas/template2 :: header2"></header>
+    <section>
       <div class="container py-5 min-vh-100">
         <h3 style="text-align: center">Editar Empleador</h3>
         <div class="row d-flex align-items-center justify-content-center h-100">
           <div class="col-md-7 col-lg-5 col-xl-5">
-            <form th:action="@{/empleador/{idEmpleador}/editar(idEmpleador=${empleador.idEmpleador})}" th:object="${empleador}" method="POST">
-
-              
-                  
-                  <input
-                  type="hidden"
-                  name="run"
-                  class="form-control form-control-lg"
-                  th:value="${empleador.run}"
-                  required
-                  />
-             
+            <form
+              th:action="@{/empleador/{idEmpleador}/editar(idEmpleador=${empleador.idEmpleador})}"
+              th:object="${empleador}"
+              method="POST"
+            >
+              <input
+                type="hidden"
+                name="run"
+                class="form-control form-control-lg"
+                th:value="${empleador.run}"
+                required
+              />
 
               <!-- Nombre input -->
               <div class="form-outline mb-4">
@@ -168,8 +71,8 @@
                 />
               </div>
 
-               <!-- Dirección -->
-               <div class="form-outline mb-4">
+              <!-- Dirección -->
+              <div class="form-outline mb-4">
                 <label class="form-label">Dirección</label>
                 <input
                   type="text"
@@ -179,21 +82,24 @@
                 />
               </div>
 
-              
               <!-- Email input -->
               <div class="form-outline mb-4">
                 <label class="form-label">Email</label>
                 <input
-                type="email"
-                name="email"
-                class="form-control form-control-lg"
-                th:value="${empleador.email}"
-                required
+                  type="email"
+                  name="email"
+                  class="form-control form-control-lg"
+                  th:value="${empleador.email}"
+                  required
                 />
               </div>
-              
+
               <!-- Campo oculto para el idUsuario -->
-              <input type="hidden" name="usuario.idUsuario" th:value="${usuario.idUsuario}" />
+              <input
+                type="hidden"
+                name="usuario.idUsuario"
+                th:value="${usuario.idUsuario}"
+              />
 
               <!-- Teléfono input -->
               <div class="form-outline mb-4">
@@ -206,9 +112,8 @@
                 />
               </div>
 
-              
               <br />
-            <br />
+              <br />
 
               <!-- Submit button -->
               <button
@@ -217,9 +122,9 @@
               >
                 Editar Empleador
               </button>
-              <br><br>
+              <br /><br />
 
-              <a th:href="@{/empleador/listaEmpleadores/{idUsuario}(idUsuario=${usuario.idUsuario})}">
+              <a th:href="@{/empleador/listaEmpleadores}">
                 <button
                   class="btn btn-secondary btn-lg btn-block w-100"
                   type="button"
@@ -234,26 +139,6 @@
     </section>
     <br /><br />
 
-    <!--
-
-        <div class="container">
-            <footer style="background-color: #ebebeb">
-                <div class="container p-4">
-          <div class="row">
-            <div class="text-center p-3">
-              <h5 class="mb-3" style="letter-spacing: 2px">Sprint Módulo 6</h5>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-            </div>
-        </div>
-    </div>
-    <div class="text-center p-3">© 2023 Bootcamp Java</div>
-</footer>
--->
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"
-      ></script>
-    </div>
+    <script th:replace="plantillas/template :: script"></script>
   </body>
 </html>

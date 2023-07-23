@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista Usuarios</title>
-    <!-- <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <!-- <link rel="stylesheet" href="/css/style.css" type="text/css">
     -->
 
     <link
@@ -17,125 +17,7 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg" style="width: 100%">
-        <div class="container" style="background-color: #f8f8f8">
-          <a class="navbar-brand" href="/">Logo</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="/bienvenida"
-                  >Menú</a
-                >
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Usuario</a
-                >
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" th:href="@{/usuario/crearUsuario}"
-                      >Agregar usuario</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" th:href="@{/usuario}"
-                      >Ver usuarios</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Empleador
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      th:href="@{/empleador/crearEmpleador}"
-                      >Agregar empleador</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      th:href="@{/empleador/listaEmpleadores}"
-                      >Ver empleadores</a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Trabajador
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Agregar trabajador</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Ver trabajadores</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Liquidación
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ver liquidación</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Nueva liquidación</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="btn btn-outline-secondary" href="/">Cerrar Sesión</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+  <header th:replace="plantillas/template2 :: header2"></header>
 
     <main>
       <div class="container">

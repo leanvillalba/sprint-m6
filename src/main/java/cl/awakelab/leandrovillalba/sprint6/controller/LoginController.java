@@ -27,10 +27,8 @@ public class LoginController {
 
     @PostMapping
     public String iniciarSesion(@RequestParam("runLogin") int run, @RequestParam("passwordLogin") String clave, HttpSession session) {
-
         // Lógica de autenticación, obtengo el idUsuario del usuario autenticado
         int idUsuario = objUsuarioService.autenticacionUsuario(run, clave);
-
         if (idUsuario != 0) {
             // Si la autenticación fue exitosa, guardo el idUsuario en la sesión
             session.setAttribute("idUsuario", idUsuario);
