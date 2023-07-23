@@ -64,11 +64,8 @@ public class TrabajadorController {
 
     @GetMapping("/listaTrabajadores")
     public String listarTrabajadores(HttpSession session, Model model) {
-        int idUsuario = (int) session.getAttribute("idUsuario");
         List<Trabajador> listaTrabajadores = objTrabajadorService.listarTrabajadores();
-        Usuario usuario = objUsuarioService.buscarUsuarioPorId(idUsuario);
         model.addAttribute("trabajadores", listaTrabajadores);
-        model.addAttribute("usuario", usuario);
         return "listarTrabajadores";
     }
 

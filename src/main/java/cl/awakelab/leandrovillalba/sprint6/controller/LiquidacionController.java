@@ -73,17 +73,32 @@ public class LiquidacionController {
         liquidacion.setSueldoLiquido(sueldoLiquido);
 
         objLiquidacionService.crearLiquidacion(liquidacion);
-        return "redirect:/bienvenida";
-
+        return "redirect:/liquidacion/listaLiquidaciones";
     }
 
     @GetMapping("/listaLiquidaciones")
     public String listarLiquidaciones(HttpSession session, Model model) {
-        //int idUsuario = (int) session.getAttribute("idUsuario");
         List<Liquidacion> listaLiquidaciones = objLiquidacionService.listarLiquidaciones();
         model.addAttribute("liquidaciones", listaLiquidaciones);
         return "listarLiquidaciones";
     }
+
+    @GetMapping("/{idLiquidacion}/editar")
+    public String mostrarFormularioEditarLiquidacion(@PathVariable long idLiquidacion, Model model){
+        Liquidacion liquidacion = objLiquidacionService.buscarLiquidacionPorId(idLiquidacion);
+        List<Trabajador> trabajadores = objTrabajadorService.listarTrabajadores();
+        List<InstitucionSalud> institucionesSalud =objInstSaludService.listarInstitucionesSalud();
+        List<InstitucionPrevision> institucionesPrevision = objInstPrevService.listarInstitucionesPrevision();
+        model.addAttribute("liquidacion", liquidacion);
+        model.addAttribute("trabajadores", trabajadores);
+        model.addAttribute("institucionesSalud", institucionesSalud);
+        model.addAttribute("institucionesPrevision", institucionesPrevision);
+
+        return "editarLiquidacion";
+    }
+
+
+
 
     @GetMapping("{idLiquidacion}/eliminar")
     public String eliminarLiquidacion(@PathVariable long idLiquidacion) {
