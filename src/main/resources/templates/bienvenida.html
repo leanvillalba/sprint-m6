@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <header th:replace="plantillas/template2 :: header2"></header>
+  <header th:include="plantillas/header2.html"></header>
 
     <main>
       <div class="container">
@@ -43,7 +43,7 @@
                 Crear Trabajador
               </button>
             </a>
-            <a href="#">
+            <a th:href="@{/liquidacion/crearLiquidacion}">
               <button class="btn btn-primary btn-lg" type="button">
                 Crear Liquidación
               </button>
@@ -63,7 +63,7 @@
                 Ver y/o Editar Trabajador
               </button>
             </a>
-            <a href="#">
+            <a th:href="@{/liquidacion/listaLiquidaciones}">
               <button class="btn btn-primary btn-lg" type="button">
                 Ver y/o Editar Liquidación
               </button>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crear Trabajador</title>
+    <title>Crear Liquidacion</title>
     <!-- <link rel="stylesheet" href="/css/style.css" type="text/css">
     -->
 
@@ -20,95 +20,37 @@
   <header th:include="plantillas/header2.html"></header>
     <section>
       <div class="container py-5 min-vh-100">
-        <h3 style="text-align: center">Crear Trabajador</h3>
+        <h3 style="text-align: center">Crear Liquidacion</h3>
         <div class="row d-flex align-items-center justify-content-center h-100">
           <div class="col-md-7 col-lg-5 col-xl-5">
             <form
-              th:action="@{/trabajador/crearTrabajador}"
-              th:object="${trabajador}"
+              th:action="@{/liquidacion/crearLiquidacion}"
+              th:object="${liquidacion}"
               method="POST"
             >
-              <!-- Run input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Run</label>
-                <input
-                  type="number"
-                  name="run"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su run sin guión ni dígito verificador"
-                />
-              </div>
-
-              <!-- Nombre input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Nombre</label>
-                <input
-                  type="text"
-                  name="nombre"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su nombre"
-                />
-              </div>
-
-              <!-- Apellido1 input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Apellido 1</label>
-                <input
-                  type="text"
-                  name="apellido1"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su primer apellido"
-                />
-              </div>
-
-              <!-- Apellido2 input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Apellido 2 (Opcional)</label>
-                <input
-                  type="text"
-                  name="apellido2"
-                  class="form-control form-control-lg"
-                  placeholder="Ingrese su segundo apellido"
-                />
-              </div>
-
-              <!-- Campo de selección de Empleadores -->
+              <!-- Campo de selección de Trabajador -->
               <select
-                name="empleadorId"
+                name="trabajadorId"
                 class="form-select form-control-lg"
                 required
               >
-                <option>Nombre de Empleador</option>
+                <option>Trabajador</option>
                 <option
-                  th:each="empleador : ${empleadores}"
-                  th:value="${empleador.idEmpleador}"
-                  th:text="${empleador.nombre + ' ' + empleador.apellido1}"
+                  th:each="trabajador : ${trabajadores}"
+                  th:value="${trabajador.idTrabajador}"
+                  th:text="${trabajador.nombre + ' ' + trabajador.apellido1}"
                 ></option>
               </select>
 
-              <!-- Email input -->
+              <!-- Sueldo imponible input -->
               <div class="form-outline mb-4">
-                <label class="form-label">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control form-control-lg"
-                  required
-                  placeholder="Ingrese su email"
-                />
-              </div>
-
-              <!-- Teléfono input -->
-              <div class="form-outline mb-4">
-                <label class="form-label">Teléfono</label>
+                <label class="form-label">Sueldo Imponible</label>
                 <input
                   type="number"
-                  name="telefono"
+                  name="sueldoImponible"
                   class="form-control form-control-lg"
-                  placeholder="Ingrese su teléfono"
+                  required
+                  placeholder="Ingrese sueldo imponible"
                 />
               </div>
 
@@ -130,6 +72,16 @@
                 </select>
               </div>
 
+              <!-- Monto Salud input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Monto Salud</label>
+                <input
+                  name="montoInstitucionSalud"
+                  disabled
+                  class="form-control form-control-lg"
+                />
+              </div>
+
               <!-- Campo de AFP -->
               <div class="form-outline mb-4">
                 <label for="institucionPrevision" class="form-label">AFP</label>
@@ -138,6 +90,7 @@
                   class="form-select form-control-lg"
                   required
                 >
+                  <option>Seleccione AFP</option>
                   <option
                     th:each="institucion : ${institucionesPrevision}"
                     th:value="${institucion.idInstitucionPrevision}"
@@ -145,6 +98,65 @@
                   ></option>
                 </select>
               </div>
+
+              <!-- Monto AFP input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Monto AFP</label>
+                <input
+
+                        name="montoInstitucionPrevisional"
+                        disabled
+                        class="form-control form-control-lg"
+                />
+              </div>
+
+              <!-- Total Descuentos input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Total Descuentos</label>
+                <input
+
+                        name="totalDescuento"
+                        disabled
+                        class="form-control form-control-lg"
+                />
+              </div>
+
+              <!-- Total Haberes input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Total Haberes</label>
+                <input
+                        name="totalHaberes"
+                        disabled
+                        class="form-control form-control-lg"
+
+                />
+              </div>
+
+              <!-- Anticipo input -->
+              <div class="form-outline mb-4">
+                <label class="form-label">Anticipo</label>
+                <input
+
+                        name="anticipo"
+                        type="number"
+                        step="any"
+                        class="form-control form-control-lg"
+
+                />
+              </div>
+
+              <!-- Sueldo Líquido -->
+              <div class="form-outline mb-4">
+                <label tclass="form-label">Sueldo Líquido</label>
+                <input
+
+                        name="sueldoLiquido"
+                        disabled
+                        class="form-control form-control-lg"
+
+                />
+              </div>
+
 
               <br />
               <br />
@@ -154,7 +166,7 @@
                 type="submit"
                 class="btn btn-primary btn-lg btn-block w-100"
               >
-                Agregar Trabajador
+                Crear Liquidación
               </button>
               <br /><br />
 

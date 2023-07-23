@@ -10,6 +10,9 @@ public interface ILiquidacionService {
     Liquidacion buscarLiquidacionPorId(long idLiquidacion);
     Liquidacion actualizarLiquidacion(Liquidacion liquidacion, long idLiquidacion);
     Liquidacion actualizarLiquidacion2(Liquidacion liquidacionActualizar);
+
+    Liquidacion crearLiquidacion2(Liquidacion liquidacionActualizar);
+
     void eliminarLiquidacion(Liquidacion liquidacion);
     void eliminarLiquidacion2(long idLiquidacion);
 }

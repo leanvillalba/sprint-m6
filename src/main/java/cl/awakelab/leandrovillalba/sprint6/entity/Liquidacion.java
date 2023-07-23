@@ -10,38 +10,37 @@ import java.time.LocalDate;
 @Table(name = "liquidacion")
 public class Liquidacion {
     @Id
-    @Column (nullable = false)
+    @Column (name = "id_liquidacion", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idLiquidacion;
 
-    @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne (optional = false, fetch = FetchType.EAGER)
     @JoinColumn (name = "id_trabajador", nullable = false)
     private Trabajador trabajador;
 
     @Column (nullable = false)
     private LocalDate periodo;
+    @Column (name = "sueldo_imponible", nullable = false)
+    private float sueldoImponible;
+    @Column (name = "sueldo_liquido", nullable = false)
+    private float sueldoLiquido;
 
-    @Column (nullable = false)
-    private int sueldoImponible;
-    @Column (nullable = false)
-    private int sueldoLiquido;
-
-    @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne (optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_salud", nullable = false)
     private InstitucionSalud institucionSalud;
 
-    @Column (nullable = false)
+    @Column (name = "monto_inst_salud", nullable = false)
     private float montoInstitucionSalud;
 
-    @ManyToOne (optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne (optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_prevision", nullable = false)
     private InstitucionPrevision institucionPrevision;
 
-    @Column (nullable = false)
+    @Column (name = "monto_inst_prevision", nullable = false)
     private float montoInstitucionPrevisional;
-    @Column (nullable = false)
+    @Column (name = "total_descuento",nullable = false)
     private float totalDescuento;
-    @Column (nullable = false)
+    @Column (name = "total_haberes",nullable = false)
     private float totalHaberes;
     @Column (nullable = false)
     private int anticipo;

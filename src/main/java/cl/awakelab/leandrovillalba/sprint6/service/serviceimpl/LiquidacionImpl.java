@@ -6,6 +6,7 @@ import cl.awakelab.leandrovillalba.sprint6.service.ILiquidacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -46,6 +47,22 @@ public class LiquidacionImpl implements ILiquidacionService {
     public Liquidacion actualizarLiquidacion2(Liquidacion liquidacionActualizar) {
         Liquidacion liquidacion = objLiquidacionRepo.findById(liquidacionActualizar.getIdLiquidacion()).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
         liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
+        liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
+        liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
+        liquidacion.setMontoInstitucionSalud(liquidacionActualizar.getMontoInstitucionSalud());
+        liquidacion.setMontoInstitucionPrevisional(liquidacionActualizar.getMontoInstitucionPrevisional());
+        liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
+        liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
+        liquidacion.setAnticipo(liquidacionActualizar.getAnticipo());
+        return objLiquidacionRepo.save(liquidacion);
+    }
+
+    @Override
+    public Liquidacion crearLiquidacion2(Liquidacion liquidacionActualizar) {
+        Liquidacion liquidacion = new Liquidacion();
+        liquidacion.setPeriodo(LocalDate.now());
+
+
         liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
         liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
         liquidacion.setMontoInstitucionSalud(liquidacionActualizar.getMontoInstitucionSalud());
