@@ -97,6 +97,40 @@ public class LiquidacionController {
         return "editarLiquidacion";
     }
 
+    @PostMapping("/{idLiquidacion}/editar")
+    public String actualizarLiquidacion(@ModelAttribute Liquidacion liquidacion,
+                                        @RequestParam int trabajadorId,
+                                        @RequestParam int institucionPrevision,
+                                        @RequestParam int institucionSalud,
+                                        @RequestParam float sueldoImponible,
+                                        @RequestParam int anticipo
+                                        ) {
+
+        Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(trabajadorId);
+        System.out.println("******************** ID Trabajador: " + trabajadorId);
+        InstitucionSalud instSalud = objInstSaludService.buscarInstitucionSaludPorId(institucionSalud);
+        InstitucionPrevision instPrev = objInstPrevService.buscarInstitucionPrevisionPorId(institucionPrevision);
+        System.out.println("******************** ID Prevision: " + institucionPrevision);
+        liquidacion.setTrabajador(trabajador);
+        liquidacion.setInstitucionSalud(instSalud);
+        liquidacion.setInstitucionPrevision(instPrev);
+
+        float dctoSalud = instSalud.getPorcDcto();
+        float dctoPrev = instPrev.getPorcDcto();
+        float montoSalud1 = sueldoImponible * (dctoSalud / 100);
+        float montoPrev1 = sueldoImponible * (dctoPrev / 100);
+        liquidacion.setMontoInstitucionSalud(montoSalud1);
+        liquidacion.setMontoInstitucionPrevisional(montoPrev1);
+        float totalDcto = montoSalud1 + montoPrev1;
+        liquidacion.setTotalDescuento(totalDcto);
+        liquidacion.setTotalHaberes(sueldoImponible);
+        float sueldoLiquido = sueldoImponible - totalDcto - anticipo;
+        liquidacion.setSueldoLiquido(sueldoLiquido);
+
+        objLiquidacionService.actualizarLiquidacion2(liquidacion);
+        return "redirect:/liquidacion/listaLiquidaciones";
+    }
+
 
 
 
