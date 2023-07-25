@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -48,31 +47,12 @@ public class LiquidacionController {
                                    @RequestParam int trabajadorId,
                                    @RequestParam float sueldoImponible,
                                    @RequestParam int anticipo) {
+
         InstitucionPrevision instPrev = objInstPrevService.buscarInstitucionPrevisionPorId(institucionPrevision);
         InstitucionSalud instSalud = objInstSaludService.buscarInstitucionSaludPorId(institucionSalud);
         Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(trabajadorId);
 
-        // Preguntar sobre cálculos fuera del controller
-        // variable = objLiquidacionService.operacionMatematica(parametros, queNecesite)
-
-        liquidacion.setInstitucionPrevision(instPrev);
-        liquidacion.setInstitucionSalud(instSalud);
-        liquidacion.setTrabajador(trabajador);
-        liquidacion.setPeriodo(LocalDate.now());
-        //System.out.println("Sueldo Imponible: $" + sueldoImponible);
-        float dctoSalud = instSalud.getPorcDcto();
-        float dctoPrev = instPrev.getPorcDcto();
-        float montoSalud1 = sueldoImponible * (dctoSalud / 100);
-        float montoPrev1 = sueldoImponible * (dctoPrev / 100);
-        liquidacion.setMontoInstitucionSalud(montoSalud1);
-        liquidacion.setMontoInstitucionPrevisional(montoPrev1);
-        float totalDcto = montoSalud1 + montoPrev1;
-        liquidacion.setTotalDescuento(totalDcto);
-        liquidacion.setTotalHaberes(sueldoImponible);
-        float sueldoLiquido = sueldoImponible - totalDcto - anticipo;
-        liquidacion.setSueldoLiquido(sueldoLiquido);
-
-        objLiquidacionService.crearLiquidacion(liquidacion);
+        objLiquidacionService.crearLiquidacion(liquidacion, trabajador, instSalud, instPrev, sueldoImponible, anticipo);
         return "redirect:/liquidacion/listaLiquidaciones";
     }
 
@@ -103,50 +83,20 @@ public class LiquidacionController {
                                         @RequestParam int institucionPrevision,
                                         @RequestParam int institucionSalud,
                                         @RequestParam float sueldoImponible,
-                                        @RequestParam int anticipo
-                                        ) {
-
+                                        @RequestParam int anticipo) {
         Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(trabajadorId);
-        System.out.println("******************** ID Trabajador: " + trabajadorId);
         InstitucionSalud instSalud = objInstSaludService.buscarInstitucionSaludPorId(institucionSalud);
         InstitucionPrevision instPrev = objInstPrevService.buscarInstitucionPrevisionPorId(institucionPrevision);
-        System.out.println("******************** ID Prevision: " + institucionPrevision);
-        // Hacer un servicio para no setear en controller
-        liquidacion.setTrabajador(trabajador);
-        liquidacion.setInstitucionSalud(instSalud);
-        liquidacion.setInstitucionPrevision(instPrev);
 
-        float dctoSalud = instSalud.getPorcDcto();
-        float dctoPrev = instPrev.getPorcDcto();
-        float montoSalud1 = sueldoImponible * (dctoSalud / 100);
-        float montoPrev1 = sueldoImponible * (dctoPrev / 100);
-        liquidacion.setMontoInstitucionSalud(montoSalud1);
-        liquidacion.setMontoInstitucionPrevisional(montoPrev1);
-        float totalDcto = montoSalud1 + montoPrev1;
-        liquidacion.setTotalDescuento(totalDcto);
-        liquidacion.setTotalHaberes(sueldoImponible);
-        float sueldoLiquido = sueldoImponible - totalDcto - anticipo;
-        liquidacion.setSueldoLiquido(sueldoLiquido);
-
-        objLiquidacionService.actualizarLiquidacion2(liquidacion);
+        objLiquidacionService.actualizarLiquidacion(liquidacion, trabajador, instSalud, instPrev, sueldoImponible, anticipo);
         return "redirect:/liquidacion/listaLiquidaciones";
     }
-
-
-
 
     @GetMapping("{idLiquidacion}/eliminar")
     public String eliminarLiquidacion(@PathVariable long idLiquidacion) {
         Liquidacion liquidacion = objLiquidacionService.buscarLiquidacionPorId(idLiquidacion);
-        objLiquidacionService.eliminarLiquidacion2(idLiquidacion);
+        objLiquidacionService.eliminarLiquidacion(idLiquidacion);
         return "redirect:/liquidacion/listaLiquidaciones";
     }
-
-
-
-
-
-
-
 
 }

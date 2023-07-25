@@ -1,6 +1,9 @@
 package cl.awakelab.leandrovillalba.sprint6.service.serviceimpl;
 
+import cl.awakelab.leandrovillalba.sprint6.entity.InstitucionPrevision;
+import cl.awakelab.leandrovillalba.sprint6.entity.InstitucionSalud;
 import cl.awakelab.leandrovillalba.sprint6.entity.Liquidacion;
+import cl.awakelab.leandrovillalba.sprint6.entity.Trabajador;
 import cl.awakelab.leandrovillalba.sprint6.repository.ILiquidacionRepository;
 import cl.awakelab.leandrovillalba.sprint6.service.ILiquidacionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +18,26 @@ public class LiquidacionImpl implements ILiquidacionService {
     @Autowired
     ILiquidacionRepository objLiquidacionRepo;
     @Override
-    public Liquidacion crearLiquidacion(Liquidacion liquidacion) {
+    public Liquidacion crearLiquidacion(Liquidacion liquidacion, Trabajador trabajador, InstitucionSalud instSalud, InstitucionPrevision instPrev, float sueldoImponible, int anticipo) {
+        liquidacion.setTrabajador(trabajador);
+        liquidacion.setInstitucionSalud(instSalud);
+        liquidacion.setInstitucionPrevision(instPrev);
+        liquidacion.setPeriodo(LocalDate.now());
+
+        float dctoSalud = instSalud.getPorcDcto();
+        float dctoPrev = instPrev.getPorcDcto();
+        float montoSalud1 = sueldoImponible * (dctoSalud / 100);
+        float montoPrev1 = sueldoImponible * (dctoPrev / 100);
+        liquidacion.setMontoInstitucionSalud(montoSalud1);
+        liquidacion.setMontoInstitucionPrevisional(montoPrev1);
+        float totalDcto = montoSalud1 + montoPrev1;
+        liquidacion.setTotalDescuento(totalDcto);
+        liquidacion.setTotalHaberes(sueldoImponible);
+        float sueldoLiquido = sueldoImponible - totalDcto - anticipo;
+        liquidacion.setSueldoLiquido(sueldoLiquido);
+
         return objLiquidacionRepo.save(liquidacion);
     }
-
     @Override
     public List<Liquidacion> listarLiquidaciones() {
         return objLiquidacionRepo.findAll();
@@ -30,59 +49,28 @@ public class LiquidacionImpl implements ILiquidacionService {
     }
 
     @Override
-    public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar, long idLiquidacion) {
-        Liquidacion liquidacion = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
-        liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
-        liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
-        liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
-        liquidacion.setMontoInstitucionSalud(liquidacionActualizar.getMontoInstitucionSalud());
-        liquidacion.setMontoInstitucionPrevisional(liquidacionActualizar.getMontoInstitucionPrevisional());
-        liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
-        liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
-        liquidacion.setAnticipo(liquidacionActualizar.getAnticipo());
+    public Liquidacion actualizarLiquidacion(Liquidacion liquidacion, Trabajador trabajador, InstitucionSalud instSalud, InstitucionPrevision instPrev, float sueldoImponible, int anticipo) {
+        liquidacion.setTrabajador(trabajador);
+        liquidacion.setInstitucionSalud(instSalud);
+        liquidacion.setInstitucionPrevision(instPrev);
+
+        float dctoSalud = instSalud.getPorcDcto();
+        float dctoPrev = instPrev.getPorcDcto();
+        float montoSalud1 = sueldoImponible * (dctoSalud / 100);
+        float montoPrev1 = sueldoImponible * (dctoPrev / 100);
+        liquidacion.setMontoInstitucionSalud(montoSalud1);
+        liquidacion.setMontoInstitucionPrevisional(montoPrev1);
+        float totalDcto = montoSalud1 + montoPrev1;
+        liquidacion.setTotalDescuento(totalDcto);
+        liquidacion.setTotalHaberes(sueldoImponible);
+        float sueldoLiquido = sueldoImponible - totalDcto - anticipo;
+        liquidacion.setSueldoLiquido(sueldoLiquido);
+
         return objLiquidacionRepo.save(liquidacion);
     }
 
     @Override
-    public Liquidacion actualizarLiquidacion2(Liquidacion liquidacionActualizar) {
-        Liquidacion liquidacion = objLiquidacionRepo.findById(liquidacionActualizar.getIdLiquidacion()).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
-        //liquidacion.setPeriodo(liquidacionActualizar.getPeriodo());
-        liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
-        liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
-        liquidacion.setMontoInstitucionSalud(liquidacionActualizar.getMontoInstitucionSalud());
-        liquidacion.setMontoInstitucionPrevisional(liquidacionActualizar.getMontoInstitucionPrevisional());
-        liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
-        liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
-        liquidacion.setAnticipo(liquidacionActualizar.getAnticipo());
-        liquidacion.setTrabajador(liquidacionActualizar.getTrabajador());
-        liquidacion.setInstitucionSalud(liquidacionActualizar.getInstitucionSalud());
-        liquidacion.setInstitucionPrevision(liquidacionActualizar.getInstitucionPrevision());
-        return objLiquidacionRepo.save(liquidacion);
-    }
-
-    @Override
-    public Liquidacion crearLiquidacion2(Liquidacion liquidacionActualizar) {
-        Liquidacion liquidacion = new Liquidacion();
-        liquidacion.setPeriodo(LocalDate.now());
-
-
-        liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
-        liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
-        liquidacion.setMontoInstitucionSalud(liquidacionActualizar.getMontoInstitucionSalud());
-        liquidacion.setMontoInstitucionPrevisional(liquidacionActualizar.getMontoInstitucionPrevisional());
-        liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
-        liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
-        liquidacion.setAnticipo(liquidacionActualizar.getAnticipo());
-        return objLiquidacionRepo.save(liquidacion);
-    }
-
-    @Override
-    public void eliminarLiquidacion(Liquidacion liquidacion) {
-        objLiquidacionRepo.delete(liquidacion);
-    }
-
-    @Override
-    public void eliminarLiquidacion2(long idLiquidacion) {
+    public void eliminarLiquidacion(long idLiquidacion) {
         objLiquidacionRepo.deleteById(idLiquidacion);
     }
 }

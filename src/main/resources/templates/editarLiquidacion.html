@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:insert="~{plantillas/head2.html}">
+  <head th:insert="~{plantillas/head2.html}">
     <title>Editar Liquidacion</title>
   </head>
 
@@ -147,6 +147,13 @@
                   class="form-control form-control-lg"
                 />
               </div>
+
+              <!-- Período -->
+              <input
+                type="hidden"
+                name="periodo"
+                th:value="${liquidacion.periodo}"
+              />
 
               <br />
               <br />
