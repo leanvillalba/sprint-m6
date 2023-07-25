@@ -111,6 +111,7 @@ public class LiquidacionController {
         InstitucionSalud instSalud = objInstSaludService.buscarInstitucionSaludPorId(institucionSalud);
         InstitucionPrevision instPrev = objInstPrevService.buscarInstitucionPrevisionPorId(institucionPrevision);
         System.out.println("******************** ID Prevision: " + institucionPrevision);
+        // Hacer un servicio para no setear en controller
         liquidacion.setTrabajador(trabajador);
         liquidacion.setInstitucionSalud(instSalud);
         liquidacion.setInstitucionPrevision(instPrev);
