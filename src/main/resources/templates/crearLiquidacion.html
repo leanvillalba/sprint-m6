@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:insert="~{plantillas/head2.html}">
+  <head th:insert="~{plantillas/head2.html}">
     <title>Crear Liquidacion</title>
-
   </head>
 
   <body>
-  <header th:include="plantillas/header2.html"></header>
+    <header th:include="plantillas/header2.html"></header>
     <section>
       <div class="container py-5 min-vh-100">
         <h3 style="text-align: center">Crear Liquidacion</h3>
@@ -92,10 +91,9 @@
               <div class="form-outline mb-4">
                 <label class="form-label">Monto AFP</label>
                 <input
-
-                        name="montoInstitucionPrevisional"
-                        disabled
-                        class="form-control form-control-lg"
+                  name="montoInstitucionPrevisional"
+                  disabled
+                  class="form-control form-control-lg"
                 />
               </div>
 
@@ -103,10 +101,9 @@
               <div class="form-outline mb-4">
                 <label class="form-label">Total Descuentos</label>
                 <input
-
-                        name="totalDescuento"
-                        disabled
-                        class="form-control form-control-lg"
+                  name="totalDescuento"
+                  disabled
+                  class="form-control form-control-lg"
                 />
               </div>
 
@@ -114,10 +111,9 @@
               <div class="form-outline mb-4">
                 <label class="form-label">Total Haberes</label>
                 <input
-                        name="totalHaberes"
-                        disabled
-                        class="form-control form-control-lg"
-
+                  name="totalHaberes"
+                  disabled
+                  class="form-control form-control-lg"
                 />
               </div>
 
@@ -125,12 +121,11 @@
               <div class="form-outline mb-4">
                 <label class="form-label">Anticipo</label>
                 <input
-
-                        name="anticipo"
-                        type="number"
-                        step="any"
-                        class="form-control form-control-lg"
-
+                  name="anticipo"
+                  type="number"
+                  step="any"
+                  class="form-control form-control-lg"
+                  required
                 />
               </div>
 
@@ -138,14 +133,11 @@
               <div class="form-outline mb-4">
                 <label tclass="form-label">Sueldo Líquido</label>
                 <input
-
-                        name="sueldoLiquido"
-                        disabled
-                        class="form-control form-control-lg"
-
+                  name="sueldoLiquido"
+                  disabled
+                  class="form-control form-control-lg"
                 />
               </div>
-
 
               <br />
               <br />

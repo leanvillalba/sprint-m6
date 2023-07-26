@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:insert="~{plantillas/head2.html}">
+  <head th:insert="~{plantillas/head2.html}">
     <title>Lista Liquidaciones</title>
   </head>
 
@@ -23,7 +23,10 @@
           </div>
           <br />
 
-          <table id="miLista" class="table table-striped table-hover table-bordered">
+          <table
+            id="miLista"
+            class="table table-striped table-hover table-bordered"
+          >
             <thead>
               <tr>
                 <th>Id</th>
@@ -35,7 +38,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr th:each="liquidacion : ${liquidaciones}">
+              <tr th:each="liquidacion, iterStat : ${liquidaciones}">
                 <td th:text="${liquidacion.idLiquidacion}"></td>
                 <td th:text="${liquidacion.trabajador.idTrabajador}"></td>
                 <td th:text="${liquidacion.trabajador.nombre}"></td>
@@ -45,25 +48,84 @@
                   <a
                     th:href="@{/liquidacion/{idLiquidacion}/editar(idLiquidacion=${liquidacion.idLiquidacion})}"
                     class="m-2 btn btn-primary"
-                    ><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></a
-                  >
+                    ><i
+                      class="fa-regular fa-pen-to-square"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
                   <a
                     th:href="@{/liquidacion/{idLiquidacion}/eliminar(idLiquidacion=${liquidacion.idLiquidacion})}"
                     class="m-2 btn btn-danger"
-                    ><i class="fa-regular fa-trash-can" style="color: #ffffff"></i></a
+                    data-bs-toggle="modal"
+                    th:data-bs-target="'#modalEliminarLiquidacion-' + ${iterStat.count}"
+                    ><i
+                      class="fa-regular fa-trash-can"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+
+                  <!-- Modal -->
+                  <div
+                    class="modal fade"
+                    th:id="'modalEliminarLiquidacion-' + ${iterStat.count}"
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false"
+                    tabindex="-1"
+                    th:attr="aria-labelledby='modalEliminarLiquidacionLabel-' + ${iterStat.count}"
+                    aria-hidden="true"
                   >
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1
+                            class="modal-title fs-5"
+                            th:id="'modalEliminarLiquidacionLabel-' + ${iterStat.count}"
+                          >
+                            "Eliminación de Liquidación"
+                          </h1>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          Está seguro de eliminar la Liquidación?
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Cancelar
+                          </button>
+                          <!-- Formulario para la eliminación -->
+                          <form
+                            th:action="@{/liquidacion/{idLiquidacion}/eliminar(idLiquidacion=${liquidacion.idLiquidacion})}"
+                            method="get"
+                          >
+                            <button type="submit" class="btn btn-danger">
+                              Eliminar
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>
             <tfoot>
-            <tr>
-              <th>Id</th>
-              <th>Id Trabajador</th>
-              <th>Nombre Trabajador</th>
-              <th>Sueldo Imponible</th>
-              <th>Sueldo Líquido</th>
-              <th>Acción</th>
-            </tr>
+              <tr>
+                <th>Id</th>
+                <th>Id Trabajador</th>
+                <th>Nombre Trabajador</th>
+                <th>Sueldo Imponible</th>
+                <th>Sueldo Líquido</th>
+                <th>Acción</th>
+              </tr>
             </tfoot>
           </table>
           <br />

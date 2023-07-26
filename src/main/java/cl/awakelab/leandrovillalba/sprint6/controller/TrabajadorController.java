@@ -99,4 +99,21 @@ public class TrabajadorController {
         return "redirect:/trabajador/listaTrabajadores";
     }
 
+    @GetMapping("/obtenerInformacionTrabajador")
+    @ResponseBody
+    public List<String> obtenerInformacionTrabajador(@RequestParam int trabajadorId) {
+        List<String> response = new ArrayList<>();
+        Trabajador trabajador = objTrabajadorService.buscarTrabajadorPorId(trabajadorId);
+
+        // Obtengo la información de las instituciones de salud y AFP asociadas al trabajador
+        String institucionSalud = trabajador.getInstitucionSalud().getDescripcion();
+        String institucionPrevision = trabajador.getInstitucionPrevision().getDescripcion();
+
+        // Agrego la información a la lista de respuesta
+        response.add(institucionSalud);
+        response.add(institucionPrevision);
+
+        return response;
+    }
+
 }
