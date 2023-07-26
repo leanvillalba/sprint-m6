@@ -38,7 +38,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr th:each="usuario: ${usuarios}">
+              <tr th:each="usuario, iterStat: ${usuarios}">
                 <td th:text="${usuario.idUsuario}"></td>
                 <td th:text="${usuario.run}"></td>
                 <td th:text="${usuario.nombre}"></td>
@@ -50,12 +50,73 @@
                   <a
                     th:href="@{/usuario/{idUsuario}/editar(idUsuario=${usuario.idUsuario})}"
                     class="m-2 btn btn-primary"
-                    ><i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i></a>
+                    ><i
+                      class="fa-regular fa-pen-to-square"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
 
                   <a
                     th:href="@{/usuario/{idUsuario}/eliminar(idUsuario=${usuario.idUsuario})}"
                     class="m-2 btn btn-danger"
-                    ><i class="fa-regular fa-trash-can" style="color: #ffffff"></i></a>
+                    data-bs-toggle="modal"
+                    th:data-bs-target="'#modalEliminarUsuario-' + ${iterStat.count}"
+                    ><i
+                      class="fa-regular fa-trash-can"
+                      style="color: #ffffff"
+                    ></i
+                  ></a>
+
+                  <!-- Modal -->
+                  <div
+                    class="modal fade"
+                    th:id="'modalEliminarUsuario-' + ${iterStat.count}"
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false"
+                    tabindex="-1"
+                    th:attr="aria-labelledby='modalEliminarUsuarioLabel-' + ${iterStat.count}"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1
+                            class="modal-title fs-5"
+                            th:id="'modalEliminarUsuarioLabel-' + ${iterStat.count}"
+                          >
+                            "Eliminación de Usuario"
+                          </h1>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body">
+                          Está seguro de eliminar al Usuario?
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Cancelar
+                          </button>
+                          <!-- Formulario para la eliminación -->
+                          <form
+                            th:action="@{/usuario/{idUsuario}/eliminar(idUsuario=${usuario.idUsuario})}"
+                            method="get"
+                          >
+                            <button type="submit" class="btn btn-danger">
+                              Eliminar
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>

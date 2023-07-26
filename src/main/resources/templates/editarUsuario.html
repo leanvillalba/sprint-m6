@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:insert="~{plantillas/head2.html}">
+  <head th:insert="~{plantillas/head2.html}">
     <title>Editar Usuario</title>
   </head>
 
   <body>
-  <header th:include="plantillas/header2.html"></header>
+    <header th:include="plantillas/header2.html"></header>
     <section>
       <div class="container py-5 min-vh-100">
         <h3 style="text-align: center">Editar Usuario</h3>
@@ -125,15 +125,27 @@
               <br />
               <br />
 
-              <!-- Submit button -->
-              <div>
-                <button
+              <!-- Submit button
+                <div>
+                  <button
                   type="submit"
                   class="btn btn-primary btn-lg btn-block w-100"
-                >
+                  >
                   Actualizar
                 </button>
               </div>
+            -->
+
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-primary btn-lg btn-block w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
+                Actualizar!
+              </button>
+
               <div>
                 <br />
 
@@ -145,6 +157,47 @@
                     Cancelar
                   </button>
                 </a>
+              </div>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                        "Actualización de Usuario"
+                      </h1>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      Está seguro de actualizar al Usuario?
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancelar
+                      </button>
+                      <button type="submit" class="btn btn-primary">
+                        Actualizar
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
